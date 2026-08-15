@@ -1,0 +1,4 @@
+chat_model_name: qwen3.7-max
+embedding_model_name: qwen3.7-text-embedding
+base_url: "https://example.invalid/v1"
+api_key: "replace-with-your-local-api-key"
