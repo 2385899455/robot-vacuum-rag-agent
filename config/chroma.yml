@@ -1,0 +1,11 @@
+collection_name: agent
+persist_directory: chroma_db
+k: 3 # get_retriever检索返回匹配结果
+data_path: data
+md5_hex_store: md5.text
+allow_knowledge_file_type: ["txt", "pdf"]
+
+chunk_size: 200
+chunk_overlap: 20
+batch_size: 20 # 文档块分成每批最多 20 条
+separators: ["\n\n", "\n", ".", "!", "?", "。", "！", "？", " ", ""]
