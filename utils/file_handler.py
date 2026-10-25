@@ -3,6 +3,7 @@ import hashlib
 from utils.logger_handler import logger
 from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
+from utils.file_type_detector import PhysicalFileTypeDetector
 
 
 
@@ -54,10 +55,19 @@ def listdir_with_allowed_type(path: str, allowed_types: tuple[str]): # 返回文
         logger.error(f"[listdir_with_allowed_type]{path}不是文件夹")
         return ()
 
+    normalized_types = {
+        type_name.lower().lstrip(".") for type_name in allowed_types
+    }
+
     for f in os.listdir(path):
-        # 查看文件结尾
-        if f.endswith(allowed_types):
-            files.append(os.path.join(path, f))
+        file_path = os.path.join(path, f)
+        if not os.path.isfile(file_path):
+            continue
+
+        suffix = os.path.splitext(f)[1].lower().lstrip(".")
+        detected_type = PhysicalFileTypeDetector.detect(file_path).value
+        if suffix in normalized_types or detected_type in normalized_types:
+            files.append(file_path)
 
     # 记录好以后不允许修改
     return tuple(files)

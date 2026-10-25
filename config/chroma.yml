@@ -5,7 +5,15 @@ data_path: data
 md5_hex_store: md5.text
 allow_knowledge_file_type: ["txt", "pdf"]
 
+semantic_type_mapping:
+  故障排除.txt: fault
+  维护保养.txt: maintenance
+  选购指南.txt: selection
+  扫拖一体机器人100问.txt: qa
+  扫地机器人100问.pdf: qa
+
 chunk_size: 200
 chunk_overlap: 20
 batch_size: 20 # 文档块分成每批最多 20 条
+semantic_max_chunk_size: 1000
 separators: ["\n\n", "\n", ".", "!", "?", "。", "！", "？", " ", ""]

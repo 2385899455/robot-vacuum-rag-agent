@@ -12,7 +12,8 @@
 - 使用 `create_agent` 创建 Agent。
 - 使用 `@tool` 将 Python 函数注册为 Agent 工具。
 - 使用 `stream_mode="values"` 流式获取 Agent 消息状态。
-- 使用 `RecursiveCharacterTextSplitter` 切分知识库文档。
+- 使用语义解析器按知识条目切分知识库文档，固定长度切分只作为兜底和超长保护。
+- 使用 DashScope Embeddings 批量生成向量，并使用稳定的 chunk ID 写入 Chroma。
 - 使用 Chroma 持久化文档向量。
 - 使用文件 MD5 对已经处理过的知识文件去重。
 - 使用 Middleware 记录工具调用、模型调用日志。
@@ -28,7 +29,9 @@ data/*.txt、data/*.pdf
         ↓
 读取文档
         ↓
-RecursiveCharacterTextSplitter 切分
+识别语义类型
+        ↓
+按问答、故障、维护或选购规则切分
         ↓
 Embedding 模型生成向量
         ↓
@@ -142,7 +145,7 @@ api_key: "你的本地 API Key"
 
 其他配置文件：
 
-- `config/chroma.yml`：Chroma 集合名、持久化目录、检索数量 `k`、文档切分参数。
+- `config/chroma.yml`：Chroma 集合名、持久化目录、检索数量 `k`、语义类型映射和文档切分参数。
 - `config/prompts.yml`：普通提示词、RAG 提示词和报告提示词的路径。
 - `config/agent.yml`：外部 CSV 数据文件路径。
 
@@ -168,7 +171,17 @@ python3 -m rag.vector_store
 
 `chroma_db/` 和 `md5.text` 属于本地生成数据，默认不会提交到 Git。换一台机器或清空数据库后，需要重新执行该命令。
 
-### 2. 单独测试 RAG 服务
+### 2. 测试 Embedding 和 Chroma 写入
+
+确认 `config/rag.yml` 中的 DashScope API Key 有效后，可以只处理维护保养文档的前 5 个 chunk：
+
+```bash
+python3 -m rag.vector_store --test-embedding
+```
+
+该命令会真实调用 Embedding 模型，将向量、原文和元数据写入 Chroma，并打印向量维度、部分向量值以及一次检索结果。
+
+### 3. 单独测试 RAG 服务
 
 ```bash
 python3 -m rag.rag_service
@@ -176,7 +189,36 @@ python3 -m rag.rag_service
 
 该命令会使用内置测试问题进行一次检索和总结。它只负责查询已经存在的向量库，不会自动导入原始文档，所以必须先运行 `rag.vector_store`。
 
-### 3. 运行 Agent
+### 4. 对比固定长度切分和语义切分
+
+评测问题位于 `eval/retrieval_questions.jsonl`，当前包含 100 条问题。需要根据当前知识库重新生成测试集时，可以执行：
+
+```bash
+python3 -m eval.generate_retrieval_questions
+```
+
+首次运行对比实验时，使用有效的 DashScope API Key 执行：
+
+```bash
+python3 -m eval.retrieval_evaluator --build
+```
+
+该命令会分别构建 `chroma_eval/fixed` 和 `chroma_eval/semantic` 两个向量库，并输出 `Hit@1`、`Hit@5`、`Recall@5` 和 `MRR@5`。详细结果保存到：
+
+```text
+eval/fixed_results.json
+eval/semantic_results.json
+```
+
+如果评测向量库已经存在，只重新评测而不重新生成文档向量；每个测试问题仍会调用一次查询 Embedding：
+
+```bash
+python3 -m eval.retrieval_evaluator --evaluate
+```
+
+需要修改测试问题时，直接编辑 `eval/retrieval_questions.jsonl`，然后重新执行 `--evaluate`；如果修改了文档或切分配置，需要重新执行 `--build`。
+
+### 5. 运行 Agent
 
 ```bash
 python3 -m agent.react_agent
@@ -241,6 +283,7 @@ Agent项目工程/
 │   └── report_prompt.txt       # 报告生成提示词
 ├── rag/
 │   ├── vector_store.py         # 文档加载、切分、Embedding 和入库
+│   ├── semantic_parser.py      # 按语义类型切分知识条目
 │   └── rag_service.py          # 检索并调用模型总结
 └── utils/
     ├── config_handler.py       # YAML 配置加载
