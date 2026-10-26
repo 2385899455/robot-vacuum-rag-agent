@@ -30,4 +30,4 @@ prompts_conf = load_prompts_config()
 agent_conf = load_agent_config()
 
 if __name__ == "__main__": 
-    print(rag_conf["chat_model_name"])
+    print(rag_conf.get("chat_model", {}).get("name", rag_conf.get("chat_model_name")))

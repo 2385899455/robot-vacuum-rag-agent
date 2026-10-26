@@ -49,7 +49,13 @@ Embedding 模型生成向量
 ```text
 用户问题
     ↓
-模型判断是否需要工具
+关键词路由（明确命中则直接选择场景）
+    ↓ 未命中或有歧义时
+独立 LLM 分类（只返回场景标签）
+    ↓
+按场景选择工具集合和调用上限
+    ↓
+Agent 模型判断是否需要工具
     ↓
 生成 tool_call
     ↓
@@ -77,6 +83,24 @@ fetch_external_data
 ```
 
 `fill_context_for_report` 工具调用成功后，工具 Middleware 会将本次运行上下文中的 `report` 标记改为 `True`，动态提示词 Middleware 随后加载 `prompts/report_prompt.txt`。
+
+### 关键词优先的混合路由
+
+`agent/routing.py` 的 `classify_intent()` 先匹配规则：明确命中时返回场景；未命中、否定表达或规则有歧义时返回 `None`。`IntentRouter.route()` 只在返回 `None` 时调用分类 LLM。例如“主刷怎么清理”直接走关键词，“它老是在原地打转”交给 LLM。纯问候才直接回答，“你好，主刷不转了”仍归为知识检索。
+
+分类模型只允许输出 `{"intent":"rag"}` 这样的 JSON。代码校验七种合法标签，工具白名单与次数仍由 `TOOLS_BY_INTENT` 和 `INTENT_BUDGETS` 决定。模型不可增加工具或修改预算。分类服务异常、超时或格式不合法时，回退为无工具的 `direct` 场景；此时可能无法完成原请求，需要从执行轨迹发现故障。
+
+`config/agent.yml` 默认设置 `router.mode: hybrid`；改成 `keyword` 可禁用路由模型，未识别的问题进入 `direct`。路由模型使用独立实例，默认继承 `config/rag.yml` 的 `chat_model` 配置。可添加 `router_model` 区块覆盖 `name`、`provider`、`base_url`、`api_key`、`use_responses_api`、`timeout` 和 `max_retries`。默认请求超时为 20 秒且不重试；切换模型服务时需同时检查地址、密钥及 API 协议。
+
+`execute_with_trace()` 的 `routing` 字段记录 `intent`、`source`（`keyword` / `llm` / `direct_fallback`）、分类耗时和异常类型。只有转交 LLM 的请求才增加分类 API 调用；这次调用不计入工具次数，但计入端到端耗时。
+
+离线验证路由分支、异常降级与响应格式：
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+关键词规则仍可能误判，LLM 不会复核已经明确命中的规则；目前也只按本次问题分类，不读取多轮对话历史。
 
 ## 环境要求
 
@@ -135,11 +159,20 @@ cp config/rag.example.yml config/rag.yml
 然后根据实际模型服务修改：
 
 ```yaml
-chat_model_name: qwen3.7-max
-embedding_model_name: qwen3.7-text-embedding
-base_url: "你的 OpenAI 兼容接口地址"
-api_key: "你的本地 API Key"
+chat_model:
+  name: qwen3.7-max
+  provider: openai
+  base_url: "Chat 模型的 OpenAI 兼容接口地址"
+  api_key: "Chat 模型 API Key"
+
+embedding_model:
+  name: qwen3.7-text-embedding
+  provider: dashscope
+  base_url: "Embedding 模型的接口地址"
+  api_key: "Embedding 模型 API Key"
 ```
+
+如果 Embedding 模型通过 OpenAI 兼容接口提供，将 `embedding_model.provider` 改为 `openai`；此时会使用 Embedding 区块中的 `base_url` 和 `api_key`。
 
 不要把真实 API Key 写入 README、示例配置或其他会提交到 Git 的文件。如果 Key 曾经进入过 Git 历史或被上传过，应立即在服务平台撤销并重新生成。
 
@@ -229,6 +262,56 @@ python3 -m agent.react_agent
 ```text
 给我生成一个使用报告
 ```
+
+如果需要查看 Agent 的完整执行记录，可以使用：
+
+```bash
+python3 -m agent.react_agent --trace
+```
+
+该入口会以 JSON 文本输出用户问题、节点执行顺序、工具名称、工具参数、工具返回值、最终答案、工具调用次数和执行耗时。代码中也可以直接调用：
+
+```python
+trace = agent.execute_with_trace("小户型适合哪种扫地机器人？")
+print(trace)
+```
+
+Agent 评测测试集位于 `eval/agent_questions.jsonl`，当前包含 31 条问题，覆盖直接回答、RAG 检索、天气查询、位置与天气组合查询、个人报告、多工具调用和异常边界场景。每条记录中的 `expected_tools` 和 `expected_order` 用于检查工具选择与执行顺序，`tool_arg_rules` 用于检查参数，`answer_keywords` 用于检查最终答案，`forbidden_tools` 用于检查不应调用的工具。
+
+运行 Agent 评测：
+
+```bash
+# 先用 1 条问题验证模型、配置和评测流程
+python3 -m eval.agent_evaluator --limit 1
+
+# 运行完整测试集
+python3 -m eval.agent_evaluator
+```
+
+评测结果会保存到 `eval/agent_results.json`，其中包含总体指标、按类别统计、逐题判定以及完整执行轨迹。
+
+比较工具描述改动前后的效果：
+
+```bash
+# 先检查流程，前 3 题都是直接回答题，不能用于判断工具描述是否改善
+python3 -m eval.agent_evaluator --compare-tool-descriptions --limit 1 --output eval/tool_description_smoke.json
+
+# 完整实验：31 题，每题分别执行修改前后两个版本，共 62 次 Agent 执行
+python3 -m eval.agent_evaluator --compare-tool-descriptions
+```
+
+基线描述保存在 `eval/tool_descriptions_before.json`，实验组读取当前工具对象的描述。
+两组使用同一模型、系统提示词、工具实现、参数 schema 和评测数据；每题共享一次路由分类结果，逐题交替执行先后顺序。工具对象仅在内存中复制，不回退源文件。城市、用户 ID 和月份采用评测模式的固定值；RAG 内部模型输出仍可能有波动。
+
+结果保存到 `eval/tool_description_comparison.json`，包含 `before` / `after` 总体和分类指标、完整轨迹、描述快照、公共路由结果、指标差值及变化题目。运行中逐步保存，`complete: true` 才表示整个实验完成。两组平均执行耗时均不包含公共路由分类耗时。
+
+自定义基线或输出文件：
+
+```bash
+python3 -m eval.agent_evaluator --compare-tool-descriptions eval/tool_descriptions_before.json --output eval/tool_description_comparison_repeat.json
+```
+
+这是单轮对比，不代表统计显著的提升；需要时换输出文件重复实验。当前指标侧重工具流程和答案关键词，无法充分衡量事实准确性、模拟数据说明和表达质量。本次描述修改同时包含结构调整与能力说明纠正，结果不能单独归因于 `Args / Returns` 格式。
 
 Agent 的核心调用也可以在代码中使用：
 

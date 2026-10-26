@@ -1,0 +1,359 @@
+{
+  "count": 35,
+  "passed": 35,
+  "keyword_count": 29,
+  "llm_count": 6,
+  "fallback_count": 0,
+  "results": [
+    {
+      "id": "direct_001",
+      "query": "你好",
+      "expected": "direct",
+      "intent": "direct",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "direct_002",
+      "query": "你能帮我做什么？",
+      "expected": "direct",
+      "intent": "direct",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "direct_003",
+      "query": "请用一句话说明你的身份。",
+      "expected": "direct",
+      "intent": "direct",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_fault_001",
+      "query": "机器人无法连接WiFi时应该如何排查？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_fault_002",
+      "query": "扫地机器人吸力明显下降，应该怎么处理？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_fault_003",
+      "query": "机器人找不到充电座怎么办？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_fault_004",
+      "query": "主刷不旋转时应该如何排查？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_maintenance_001",
+      "query": "扫地机器人平时应该怎样维护和保养？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_maintenance_002",
+      "query": "尘盒和滤网应该多久清理一次？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_maintenance_003",
+      "query": "扫拖机器人拖布发臭应该怎么办？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_selection_001",
+      "query": "小户型家庭选购扫地机器人时主要看哪些参数？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_selection_002",
+      "query": "家里养猫，选购扫地机器人应该关注什么？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_usage_001",
+      "query": "扫地机器人清扫时频繁碰撞家具怎么解决？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_usage_002",
+      "query": "机器人不移动或移动缓慢时应该检查什么？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_qa_001",
+      "query": "扫地机器人可以在地毯上使用吗？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "rag_qa_002",
+      "query": "扫地机器人支持哪些清扫模式？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "weather_001",
+      "query": "北京今天的天气怎么样？",
+      "expected": "weather",
+      "intent": "weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "weather_002",
+      "query": "上海现在适合使用扫地机器人吗？",
+      "expected": "weather",
+      "intent": "weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "weather_003",
+      "query": "深圳今天的空气质量和降雨情况如何？",
+      "expected": "weather",
+      "intent": "weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "location_weather_001",
+      "query": "我所在城市今天适合使用扫地机器人吗？",
+      "expected": "location_weather",
+      "intent": "location_weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "report_001",
+      "query": "给我生成一个使用报告。",
+      "expected": "report",
+      "intent": "report",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "report_002",
+      "query": "查询我2025年1月的机器人使用记录。",
+      "expected": "report",
+      "intent": "report",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "report_003",
+      "query": "帮我生成2025-01的个人扫地机器人使用报告。",
+      "expected": "report",
+      "intent": "report",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "report_004",
+      "query": "我想看看我的机器人这个月的清洁效率。",
+      "expected": "report",
+      "intent": "report",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "external_001",
+      "query": "请查询我的历史扫地机器人使用数据。",
+      "expected": "report",
+      "intent": "report",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "report_guard_001",
+      "query": "不要生成报告，只告诉我主刷怎么清理。",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "llm",
+      "elapsed_seconds": 7.114,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "mixed_001",
+      "query": "下雨天室内湿度较高时，扫地机器人使用有什么注意事项？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "unknown_001",
+      "query": "请告诉我明年某款尚未发布机器人的准确续航时间。",
+      "expected": "direct",
+      "intent": "direct",
+      "source": "llm",
+      "elapsed_seconds": 4.229,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "unknown_002",
+      "query": "帮我修改扫地机器人厂商的后台数据库。",
+      "expected": "direct",
+      "intent": "direct",
+      "source": "llm",
+      "elapsed_seconds": 5.676,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "multi_001",
+      "query": "先查询北京天气，再说明这种天气下扫地机器人使用时要注意什么。",
+      "expected": "mixed_weather",
+      "intent": "mixed_weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "multi_002",
+      "query": "查询我所在城市的天气，并给出适合扫地机器人的清洁建议。",
+      "expected": "mixed_location_weather",
+      "intent": "mixed_location_weather",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "paraphrase_fault",
+      "query": "它老是在原地打转，该怎么弄？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "llm",
+      "elapsed_seconds": 4.667,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "paraphrase_weather",
+      "query": "合肥今天会不会下雨？",
+      "expected": "weather",
+      "intent": "weather",
+      "source": "llm",
+      "elapsed_seconds": 5.299,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "greeting_fault",
+      "query": "你好，主刷不转了怎么办？",
+      "expected": "rag",
+      "intent": "rag",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "id": "negated_report",
+      "query": "不要报告，只查我的使用记录",
+      "expected": "report",
+      "intent": "report",
+      "source": "llm",
+      "elapsed_seconds": 5.076,
+      "error_type": null,
+      "passed": true
+    }
+  ]
+}

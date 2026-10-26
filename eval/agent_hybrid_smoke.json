@@ -1,0 +1,53 @@
+[
+  {
+    "query": "你好",
+    "node_sequence": [
+      "log_before_model.before_model",
+      "model"
+    ],
+    "tool_calls": [],
+    "final_answer": "你好！有什么可以帮你？扫地机器人的使用、故障排查或维护保养问题，都可以问我。",
+    "tool_call_count": 0,
+    "elapsed_seconds": 5.863,
+    "routing": {
+      "intent": "direct",
+      "source": "keyword",
+      "elapsed_seconds": 0.0,
+      "error_type": null
+    },
+    "intent": "direct",
+    "max_tool_calls": 0
+  },
+  {
+    "query": "合肥今天会不会下雨？",
+    "node_sequence": [
+      "log_before_model.before_model",
+      "model",
+      "tools",
+      "log_before_model.before_model",
+      "model"
+    ],
+    "tool_calls": [
+      {
+        "name": "get_weather",
+        "args": {
+          "city": "合肥"
+        },
+        "result": "城市合肥天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+        "node": "model",
+        "call_id": "call_944b9648ef38444b8fbe3b1d5ac6a6c7"
+      }
+    ],
+    "final_answer": "合肥目前的天气是晴天，未来6小时降雨概率极低，短时间内不太可能下雨。目前气温26℃，南风1级。\n\n至于今天其余时段是否会下雨，我不知道；现有数据仅覆盖未来6小时，无法确定全天的降雨情况。",
+    "tool_call_count": 1,
+    "elapsed_seconds": 11.359,
+    "routing": {
+      "intent": "weather",
+      "source": "llm",
+      "elapsed_seconds": 3.15,
+      "error_type": null
+    },
+    "intent": "weather",
+    "max_tool_calls": 1
+  }
+]

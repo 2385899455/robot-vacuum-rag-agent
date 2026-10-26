@@ -1,4 +1,19 @@
-chat_model_name: qwen3.7-max
-embedding_model_name: qwen3.7-text-embedding
-base_url: "https://example.invalid/v1"
-api_key: "replace-with-your-local-api-key"
+chat_model:
+  name: qwen3.7-max
+  provider: openai
+  base_url: "https://example.invalid/v1"
+  api_key: "replace-with-your-chat-api-key"
+
+# 默认继承 chat_model 的模型、provider、base_url、api_key 和 API 协议。
+# 如需独立服务，可在这里覆盖相应字段；切换服务时需同时检查连接信息和协议。
+router_model:
+  timeout: 20
+  max_retries: 0
+  # name: your-fast-router-model
+  # use_responses_api: false
+
+embedding_model:
+  name: qwen3.7-text-embedding
+  provider: dashscope
+  base_url: "https://example.invalid/v1"
+  api_key: "replace-with-your-embedding-api-key"

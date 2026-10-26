@@ -1,0 +1,187 @@
+{
+  "created_at": "2026-10-26T22:39:02",
+  "question_file": "/tmp/agent_router_edges.jsonl",
+  "evaluation_elapsed_seconds": 118.297,
+  "metrics": {
+    "question_count": 2,
+    "passed": 2,
+    "pass_rate": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "tool_order_accuracy": 1.0,
+    "order_preserved_rate": 1.0,
+    "argument_accuracy": 1.0,
+    "answer_keyword_hit_rate": 1.0,
+    "forbidden_tool_rate": 1.0,
+    "within_tool_call_limit_rate": 1.0,
+    "error_rate": 0.0,
+    "average_tool_calls": 2.5,
+    "average_elapsed_seconds": 59.148
+  },
+  "metrics_by_category": {
+    "external_data": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 4.0,
+      "average_elapsed_seconds": 71.46
+    },
+    "report_guard": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 46.836
+    }
+  },
+  "results": [
+    {
+      "id": "external_001",
+      "category": "external_data",
+      "query": "请查询我的历史扫地机器人使用数据。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 4,
+      "elapsed_seconds": 71.46,
+      "trace": {
+        "query": "请查询我的历史扫地机器人使用数据。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_885a0b0e39a8495b95e03b665eaf6a8e"
+          },
+          {
+            "name": "get_current_month",
+            "args": {},
+            "result": "2025-01",
+            "node": "model",
+            "call_id": "call_6fbeb797c9eb40e48f72605676868fbb"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_f61422dc221944c4b8b8b5c1c5046afc"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_e0cbb61c773f4af79928b64af426e1e9"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n## 一、报告概览\n\n- **统计月份：**2025-01\n- **居住环境：**约 65㎡ 公寓\n- **地面类型：**以木地板为主\n- **使用人群：**单人居住\n\n整体来看，你的扫地机器人使用频率较高，清洁习惯良好，综合表现优于约 65% 的同面积用户。\n\n## 二、使用情况分析\n\n### 1. 清洁覆盖情况\n\n- 当前清洁覆盖率约为 **85%**，整体清洁效果较好。\n- 平均每天清洁面积约为 **45㎡**，能够基本满足日常维护需求。\n- 主要遗漏区域为**沙发底部**，原因可能是机器人机身高度无法进入，而非清洁路径设置问题。\n\n### 2. 清洁效率评价\n\n对于 65㎡ 左右的木地板公寓，目前的清洁频率和面积覆盖较为合理：\n\n- 木地板灰尘、毛发等日常污染物能够得到持续清理。\n- 单人居住环境的日常清洁负担相对较低，现有使用强度基本充足。\n- 若家中存在较多家具或低矮空间，实际地面覆盖率可能会受到机身通过能力限制。\n\n### 3. 耗材状态\n\n- **主刷：**预计还可使用约 60 天。\n- **HEPA 滤网：**当前剩余约 40%，建议开始安排清洁或更换计划。\n\n目前主刷无需立即更换，但滤网余量相对有限，继续使用一段时间后可能影响吸力和排风效率。\n\n## 三、保养与使用建议\n\n### 1. 优先处理 HEPA 滤网\n\n建议近期检查滤网状态：\n\n1. 按说明书取下滤网。\n2. 清理表面灰尘，避免用力拍打造成滤材损伤。\n3. 如果滤网已经明显变灰、堵塞，或清理后吸力仍下降，建议直接更换。\n4. 更换后注意确认滤网完全干燥并正确安装。\n\n如果家中灰尘较多，建议每 2～4 周检查一次滤网。\n\n### 2. 做好主刷维护\n\n虽然主刷预计仍可使用约 60 天，但建议每周检查一次：\n\n- 清理缠绕在刷子两端的毛发和线头。\n- 检查刷毛是否明显磨损、变形。\n- 观察清扫后是否出现毛发残留增多或运行噪声变大。\n\n如出现清洁效果下降、异响或主刷卡顿，可提前更换，不必等到预计寿命结束。\n\n### 3. 改善沙发底部的遗漏\n\n针对沙发底部无法进入的问题，可以采取以下措施：\n\n- 使用人工清洁工具定期清理沙发底部。\n- 如果沙发支持调整高度，可适当增加底部通行空间。\n- 在机器人 App 中设置沙发周边重点清洁区域，减少周边灰尘积累。\n- 清洁前移开沙发附近的小型障碍物，避免机器人反复绕行。\n\n### 4. 优化清洁计划\n\n建议保持当前较高的清洁频率，同时根据不同区域进行调整：\n\n- **客厅、餐区：**保持每日或隔日清扫。\n- **卧室等低污染区域：**可调整为每周 3～4 次。\n- **沙发周边和家具密集区：**适当增加定点清扫。\n- 木地板环境下，如开启拖地功能，建议控制用水量，避免地板长时间潮湿。\n\n## 四、综合结论\n\n你的机器人在 2025-01 的使用表现良好，清洁频率和日均清洁面积均处于较理想水平，整体效果优于多数同面积用户。当前最值得关注的是 **HEPA 滤网余量**以及**沙发底部的结构性漏扫**。\n\n建议近期完成一次滤网检查，并继续保持现有清洁频率；主刷暂时无需更换，但应定期清理缠绕物并关注运行噪声和清洁效果变化。",
+        "tool_call_count": 4,
+        "elapsed_seconds": 71.46
+      }
+    },
+    {
+      "id": "report_guard_001",
+      "category": "report_guard",
+      "query": "不要生成报告，只告诉我主刷怎么清理。",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 46.836,
+      "trace": {
+        "query": "不要生成报告，只告诉我主刷怎么清理。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 主刷 清理 拆卸 安装 毛发缠绕 注意事项"
+            },
+            "result": "参考资料未提供主刷的清理、拆卸或安装方法。仅建议每日检查驱动轮和万向轮，用镊子清除缠绕的毛发、杂物，确保轮组转动顺畅；清扫后清理防撞条缝隙中的毛发、线头，避免影响卡扣回弹。",
+            "node": "model",
+            "call_id": "call_7a79608cfede44c5ac238e4462aafac1"
+          }
+        ],
+        "final_answer": "我不知道你这款机器的具体拆卸结构，但大多数扫地机器人可按以下方式清理主刷：\n\n1. **关机并拔掉充电座电源**，将机器人翻转，避免误启动。  \n2. **按压或解锁主刷盖卡扣**，取下主刷盖。  \n3. **取出主刷**，用随机器附带的清洁工具或剪刀，小心剪断缠绕的毛发、线头。  \n4. 清理主刷两端轴承、刷槽和主刷盖内的灰尘；也要检查驱动轮、万向轮及防撞条缝隙。  \n5. **不要直接水洗带轴承或电机连接结构的主刷**；除非说明书明确标注可水洗。清洁后应完全干燥。  \n6. 将主刷装回，确认两端卡入到位，再扣好主刷盖。用手轻轻转动主刷，确认转动顺畅、没有异响。\n\n建议每周检查一次；家中有宠物或长发较多时，最好每2～3天清理一次。若主刷转不动、报错或出现异响，先检查两端是否有毛发缠绕。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 46.836
+      }
+    }
+  ]
+}

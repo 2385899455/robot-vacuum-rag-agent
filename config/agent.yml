@@ -1,1 +1,4 @@
 external_data_path: data/external/records.csv
+
+router:
+  mode: hybrid  # hybrid：关键词优先，未命中/有歧义时用 LLM；keyword：仅关键词

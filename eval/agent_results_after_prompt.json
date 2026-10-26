@@ -1,0 +1,1852 @@
+{
+  "created_at": "2026-10-26T18:40:50",
+  "question_file": "/Users/a/Documents/vscode/Agent智能体/Agent项目工程/eval/agent_questions.jsonl",
+  "evaluation_elapsed_seconds": 1264.184,
+  "metrics": {
+    "question_count": 31,
+    "passed": 30,
+    "pass_rate": 0.9677,
+    "tool_selection_accuracy": 1.0,
+    "tool_order_accuracy": 1.0,
+    "order_preserved_rate": 1.0,
+    "argument_accuracy": 1.0,
+    "answer_keyword_hit_rate": 0.9677,
+    "forbidden_tool_rate": 1.0,
+    "within_tool_call_limit_rate": 1.0,
+    "error_rate": 0.0,
+    "average_tool_calls": 1.387,
+    "average_elapsed_seconds": 40.78
+  },
+  "metrics_by_category": {
+    "direct_answer": {
+      "question_count": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 0.0,
+      "average_elapsed_seconds": 11.112
+    },
+    "external_data": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 4.0,
+      "average_elapsed_seconds": 84.196
+    },
+    "location_weather": {
+      "question_count": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 0.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 2.0,
+      "average_elapsed_seconds": 45.639
+    },
+    "mixed_rag_weather": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 57.462
+    },
+    "multi_tool": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 2.5,
+      "average_elapsed_seconds": 58.77
+    },
+    "rag_fault": {
+      "question_count": 4,
+      "passed": 4,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 42.736
+    },
+    "rag_maintenance": {
+      "question_count": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 36.298
+    },
+    "rag_qa": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 45.37
+    },
+    "rag_selection": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 54.512
+    },
+    "rag_usage": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 31.448
+    },
+    "report": {
+      "question_count": 4,
+      "passed": 4,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 3.5,
+      "average_elapsed_seconds": 68.151
+    },
+    "report_guard": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 41.841
+    },
+    "unknown": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 0.0,
+      "average_elapsed_seconds": 7.813
+    },
+    "weather": {
+      "question_count": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 17.812
+    }
+  },
+  "results": [
+    {
+      "id": "direct_001",
+      "category": "direct_answer",
+      "query": "你好",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 8.259,
+      "trace": {
+        "query": "你好",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "你好！我是扫地机器人和扫拖一体机器人的智能客服，很高兴为你服务。请问你想咨询清洁使用、故障排查、维护保养，还是天气对机器人使用的影响？",
+        "tool_call_count": 0,
+        "elapsed_seconds": 8.259
+      }
+    },
+    {
+      "id": "direct_002",
+      "category": "direct_answer",
+      "query": "你能帮我做什么？",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 16.286,
+      "trace": {
+        "query": "你能帮我做什么？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我可以作为扫地机器人和扫拖一体机器人的智能客服，帮你：\n\n- **使用指导**：规划清洁、设置禁区、预约清扫、回洗回充、地图管理等。\n- **故障排查**：不启动、不回充、漏水、拖布不转、吸力变弱、噪音异常、卡住等问题。\n- **清洁与维护建议**：尘盒、滤网、滚刷、边刷、拖布、水箱和基站的清洁保养。\n- **环境适配判断**：根据天气、湿度、降雨情况，判断是否适合使用扫拖功能。\n- **选购与功能对比**：分析不同扫地机器人功能是否适合你的家庭。\n- **个人使用报告**：查询指定月份的清洁效率、耗材状态和使用记录。\n\n你可以直接告诉我具体情况，例如：“机器人总是找不到充电座”或“帮我生成本月使用报告”。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 16.286
+      }
+    },
+    {
+      "id": "direct_003",
+      "category": "direct_answer",
+      "query": "请用一句话说明你的身份。",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 8.79,
+      "trace": {
+        "query": "请用一句话说明你的身份。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我是扫地机器人和扫拖一体机器人的专业智能客服。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 8.79
+      }
+    },
+    {
+      "id": "rag_fault_001",
+      "category": "rag_fault",
+      "query": "机器人无法连接WiFi时应该如何排查？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 30.092,
+      "trace": {
+        "query": "机器人无法连接WiFi时应该如何排查？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 无法连接WiFi 配网失败 路由器 网络故障排查"
+            },
+            "result": "参考资料未提供扫地机器人无法连接WiFi、配网失败或路由器网络故障的排查方法。",
+            "node": "model",
+            "call_id": "call_2cb212642585404586dc965e57bd793a"
+          }
+        ],
+        "final_answer": "我不知道你这台机器的具体型号和故障原因，但可以按以下顺序排查：\n\n1. **确认 WiFi 条件**\n   - 确认手机能正常连接该 WiFi 并上网。\n   - 优先使用 **2.4GHz WiFi**；许多扫地机器人不支持 5GHz。\n   - 配网时让机器人、手机和路由器尽量靠近。\n   - 暂时关闭手机 VPN、代理及蜂窝数据，避免配网切换网络。\n\n2. **检查路由器设置**\n   - WiFi 名称和密码不要包含过于特殊的字符，重新确认密码是否输入正确。\n   - 暂时关闭隐藏 WiFi、MAC 地址过滤、访客网络及企业级认证。\n   - 将加密方式调整为常见的 **WPA/WPA2-PSK**，避免仅使用 WPA3。\n   - 确保路由器开启 DHCP，且没有达到设备连接数量上限。\n\n3. **重置机器人的 WiFi**\n   - 按说明书同时长按指定的两个按键，直到听到“进入配网模式”或看到 WiFi 指示灯闪烁。\n   - 在 App 中删除旧设备或旧网络信息，再重新添加机器人。\n   - 配网过程中不要离开 App，也不要切换到其他 WiFi。\n\n4. **重启设备**\n   - 重启机器人、路由器和手机。\n   - 路由器断电约 30 秒后重新通电，等待网络完全恢复，再进行配网。\n\n5. **排除 App 和手机问题**\n   - 将 App 更新到最新版本，并确认已开启定位、蓝牙和局域网权限。\n   - 清除 App 缓存，必要时卸载后重新安装。\n   - 尝试用另一部手机配网，以排除手机权限或系统兼容问题。\n\n6. **进一步判断**\n   - 如果能连接手机热点但不能连接家中 WiFi，通常是路由器频段、加密方式或网络权限问题。\n   - 如果既不能连接家中 WiFi，也不能连接手机热点，可能是配网模式、App 或机器人通信模块异常，建议联系售后并提供型号、App 报错提示和指示灯状态。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 30.092
+      }
+    },
+    {
+      "id": "rag_fault_002",
+      "category": "rag_fault",
+      "query": "扫地机器人吸力明显下降，应该怎么处理？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 36.683,
+      "trace": {
+        "query": "扫地机器人吸力明显下降，应该怎么处理？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人吸力明显下降 排查处理 滤网 尘盒 风道 滚刷 维护"
+            },
+            "result": "现有参考资料未提供滤网、尘盒、风道和滚刷导致吸力下降的排查方法。仅建议每日检查驱动轮、万向轮并清除缠绕的毛发和杂物；每次清扫后清理防撞条缝隙中的毛发、线头。",
+            "node": "model",
+            "call_id": "call_c4a493277fac41049823f96c53d2cfd2"
+          }
+        ],
+        "final_answer": "我不知道你这台机器吸力下降的具体原因，但可以先做以下检查：\n\n1. **清理驱动轮和万向轮**：去除缠绕的毛发、线头和杂物，避免机器人行走受阻、清扫效果变差。  \n2. **清理防撞条缝隙**：检查并清除其中的毛发、灰尘和线头。  \n3. **检查尘盒、滤网、吸入口和滚刷**：确认没有堵塞或毛发缠绕；清洁后按说明书要求晾干滤网，再装回使用。  \n4. **重新启动并测试**：选择较高吸力档，在硬地面上运行，观察吸力是否恢复。  \n5. 如果仍然明显下降，可能涉及风机、密封或其他内部故障，建议联系官方售后检测，避免自行拆机。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 36.683
+      }
+    },
+    {
+      "id": "rag_fault_003",
+      "category": "rag_fault",
+      "query": "机器人找不到充电座怎么办？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 51.716,
+      "trace": {
+        "query": "机器人找不到充电座怎么办？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 找不到充电座 回充失败 故障排查 充电座摆放 清洁传感器 地图"
+            },
+            "result": "回充失败时，可先用干布清洁机器人和充电座的金属触点，避免氧化造成接触不良；清理防撞条缝隙中的毛发、线头，确保正常回弹；检查底部驱动轮和万向轮，去除缠绕的毛发及杂物，保证轮组转动顺畅。",
+            "node": "model",
+            "call_id": "call_d7eb2ef120524fac96cd1e8d5c7eee58"
+          }
+        ],
+        "final_answer": "可以按以下顺序排查：\n\n1. **确认充电座通电**：检查电源线是否插牢，充电座指示灯是否正常。\n2. **清理充电触点**：用干布擦拭机器人底部和充电座上的金属触点，避免灰尘或氧化导致无法充电。\n3. **清理轮组和防撞条**：去除驱动轮、万向轮上的毛发和杂物，并清理防撞条缝隙，确保轮子转动顺畅、防撞条能正常回弹。\n4. **调整充电座位置**：将充电座放在靠墙、平整且无遮挡的位置，前方和两侧不要堆放杂物，也不要频繁移动充电座。\n5. **检查回充路径**：确认机器人与充电座之间没有电线、门槛或被关闭的房门；如果近期移动过充电座或重置过地图，可能需要重新建图。\n6. **手动辅助回充**：先将机器人放回充电座，确认能正常充电，再启动一次清扫或回充测试。\n\n如果仍然找不到充电座，建议重启机器人并重新定位充电座；若多次失败，可能涉及传感器、驱动轮或充电座故障，需要联系售后检测。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 51.716
+      }
+    },
+    {
+      "id": "rag_fault_004",
+      "category": "rag_fault",
+      "query": "主刷不旋转时应该如何排查？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 52.453,
+      "trace": {
+        "query": "主刷不旋转时应该如何排查？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人主刷不旋转故障排查 缠绕 安装 驱动组件 清洁维修"
+            },
+            "result": "参考资料未提供主刷不旋转、主刷缠绕、安装或驱动组件维修的具体排查方法。仅建议每日检查底部驱动轮和万向轮，用镊子清除缠绕的毛发、杂物，保持轮组转动顺畅；清扫后清理防撞条缝隙中的毛发、线头。",
+            "node": "model",
+            "call_id": "call_e211e17b7bce4e74b6eac30699defce3"
+          }
+        ],
+        "final_answer": "主刷不旋转可按以下顺序排查：\n\n1. **关机并取出尘盒**，将机器人翻转，避免误启动。\n2. **拆下主刷盖和主刷**，清理主刷两端轴套、刷毛及主刷槽内缠绕的毛发、线头、灰尘等。\n3. **检查主刷两端是否能顺畅转动**，确认端盖、轴套没有卡死或异物堵塞。\n4. **重新安装主刷**，确保两端完全卡入，主刷盖扣紧且没有翘起。\n5. 清理底部的**驱动轮和万向轮**，确保轮组没有被毛发或杂物卡住；同时检查防撞条缝隙是否有毛发、线头。\n6. 启动机器人观察：如果主刷仍完全不转，可能涉及主刷电机、传动结构或主板故障。\n\n目前资料无法确定具体故障原因；若清理和重新安装后仍不转，建议停止继续使用并联系售后检修，避免电机持续堵转。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 52.453
+      }
+    },
+    {
+      "id": "rag_maintenance_001",
+      "category": "rag_maintenance",
+      "query": "扫地机器人平时应该怎样维护和保养？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 54.35,
+      "trace": {
+        "query": "扫地机器人平时应该怎样维护和保养？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 日常维护 保养 清洁 维护周期 耗材更换 注意事项"
+            },
+            "result": "日常使用后，用干软布擦拭机身外壳，去除灰尘和水渍；每日检查底部驱动轮、万向轮，用镊子清除缠绕的毛发和杂物，保持轮组转动顺畅。使用时避免机器人碰撞尖锐硬物，以防机身外壳和传感器损坏。参考资料未说明具体维护周期及耗材更换要求。",
+            "node": "model",
+            "call_id": "call_cb3f8e539da14f0c821bfbdae5f7ac25"
+          }
+        ],
+        "final_answer": "扫地机器人建议按以下方式维护：\n\n1. **每次使用后**\n   - 清空尘盒，避免垃圾堆积影响吸力。\n   - 擦拭机身外壳，尤其是容易沾灰或水渍的位置。\n   - 检查底部驱动轮和万向轮，用镊子清除缠绕的毛发、线头和杂物。\n\n2. **定期清理关键部件**\n   - 清理主刷、边刷上的毛发和纤维，防止转动受阻。\n   - 擦拭防跌落传感器、回充传感器和导航传感器，避免灰尘导致漏扫、迷路或无法回充。\n   - 滤网按照说明书清洁或更换；如果滤网不可水洗，不要直接冲洗。\n\n3. **使用扫拖功能时**\n   - 拖布使用后及时清洗、晾干，避免产生异味或霉菌。\n   - 清空污水箱，清洁水箱和底座清洗槽。\n   - 不要让机器人长时间停在潮湿拖布上，以免地板受潮。\n\n4. **日常使用注意**\n   - 使用前收好电线、细绳、小物件和易碎品。\n   - 避免机器人碰撞尖锐硬物，以免损坏外壳、传感器或轮组。\n   - 不要让机身进水；清洁主机时使用干软布。\n   - 保持充电座周围无遮挡，方便机器人准确回充。\n\n5. **关于维护周期**\n   - 具体的滤网、主刷、边刷和拖布更换周期因机型、家庭灰尘量和宠物毛发情况而异，应以产品说明书为准。\n   - 如果出现吸力下降、噪音变大、漏扫、无法回充或拖地有异味，应及时检查并清洁相关部件。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 54.35
+      }
+    },
+    {
+      "id": "rag_maintenance_002",
+      "category": "rag_maintenance",
+      "query": "尘盒和滤网应该多久清理一次？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 34.231,
+      "trace": {
+        "query": "尘盒和滤网应该多久清理一次？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人尘盒和滤网多久清理一次 清洁频率 更换周期 日常维护"
+            },
+            "result": "参考资料未提供尘盒和滤网的清理频率、清洁方法或更换周期。资料仅建议每日使用后擦拭机身、每日清洁充电触点，并每日检查和清理驱动轮、万向轮上的毛发杂物。",
+            "node": "model",
+            "call_id": "call_1568010039974b9f9a21556a23daf7a5"
+          }
+        ],
+        "final_answer": "我不知道你这款机器的官方清洁周期，具体频率无法确定。一般可按以下方式维护：\n\n- **尘盒**：每次清扫后倒空；如果家中宠物多、灰尘大，建议及时清理，避免吸力下降或异味。\n- **滤网**：每周清理1次；掉毛多或使用频繁时可增加到每3～5天一次。先轻拍或用清洁刷除尘，是否能水洗要以说明书为准。\n- **滤网更换**：通常约3～6个月更换一次；若出现明显变黑、变形、破损或吸力持续下降，应提前更换。\n- 清洗后的滤网必须**完全晾干**后再装回，避免损坏电机。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 34.231
+      }
+    },
+    {
+      "id": "rag_maintenance_003",
+      "category": "rag_maintenance",
+      "query": "扫拖机器人拖布发臭应该怎么办？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 20.314,
+      "trace": {
+        "query": "扫拖机器人拖布发臭应该怎么办？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫拖机器人拖布发臭 异味 清洁 晾晒 维护 使用注意事项"
+            },
+            "result": "参考资料未提供拖布发臭、清洁或晾晒的具体方法。现有建议包括：每日使用后用干软布擦拭机器人外壳，去除灰尘和水渍；清扫完成后及时清理防撞条缝隙中的毛发、线头；每日检查驱动轮和万向轮，并清除缠绕的毛发、杂物，保持设备清洁顺畅。",
+            "node": "model",
+            "call_id": "call_5800872969c049dc8eff555a7d0491d3"
+          }
+        ],
+        "final_answer": "拖布发臭通常与清洗后残留污水、未充分晾干或长期未清洁有关。建议按以下步骤处理：\n\n1. **立即取下拖布**，用清水充分冲洗，必要时按说明书使用中性清洁剂清洗。  \n2. **彻底晾干后再安装**，不要让湿拖布长时间留在机器人或基站内。  \n3. **清空并清洗污水箱**，同时擦拭拖布盘、清洗槽及与拖布接触的部位。  \n4. **检查是否有毛发、污物残留**，尤其是防撞条缝隙、驱动轮、万向轮和基站清洁区域。  \n5. 如果清洗后仍有明显异味，或拖布已经发黏、变色、发霉，建议直接更换拖布。  \n6. 不要混用消毒液、漂白剂、洁厕剂等化学品，以免损伤拖布、密封件或机器人。\n\n现有资料未提供你这款机器人的具体拖布清洁和除味方法，因此我不知道该型号是否支持高温清洗、烘干或专用清洁液，具体请以说明书要求为准。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 20.314
+      }
+    },
+    {
+      "id": "rag_selection_001",
+      "category": "rag_selection",
+      "query": "小户型家庭选购扫地机器人时主要看哪些参数？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 59.076,
+      "trace": {
+        "query": "小户型家庭选购扫地机器人时主要看哪些参数？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "小户型家庭选购扫地机器人主要参数 机身尺寸 基站占地 导航避障 续航 吸力 清洁维护"
+            },
+            "result": "参考资料未提供机身尺寸、基站占地、导航避障、续航和吸力等选购参数。清洁维护方面，建议每日检查驱动轮和万向轮，清理缠绕毛发及杂物；使用后用干软布擦拭机身，避免碰撞尖锐硬物，以保护外壳和传感器。",
+            "node": "model",
+            "call_id": "call_d193822a09bd4b238dad605a9e1b29d4"
+          }
+        ],
+        "final_answer": "小户型选购扫地机器人，建议按以下优先级看参数：\n\n1. **机身和基站尺寸**\n   - 先测量床底、沙发底、柜体间隙，以及基站可摆放位置。\n   - 重点看机器人高度、基站宽度和前后预留空间。\n   - 小户型更适合结构紧凑、基站不占过道的机型。\n\n2. **导航与避障能力**\n   - 优先选择带激光导航或成熟视觉导航的产品，地图规划更稳定。\n   - 如果家中有电线、拖鞋、玩具、宠物用品，应重点看AI识别和避障能力。\n   - 小空间家具密集，避障往往比单纯提高吸力更重要。\n\n3. **清洁能力**\n   - 关注吸力、主刷结构、边刷贴边能力和防缠绕设计。\n   - 有宠物或长发家庭，应优先选择毛发防缠绕主刷，并查看尘盒容量是否够用。\n   - 地面以硬地板为主时，拖地效果、贴边清洁和拖布压力通常比极高吸力更实用。\n\n4. **基站功能与占地**\n   - 自动集尘可以减少频繁倒尘；自动洗拖布、烘干则能降低维护频率。\n   - 但功能越多，基站通常越大，要确认家中是否有上下水、排污和通风条件。\n   - 小户型如果储物空间有限，可优先考虑集尘但体积较小的基站。\n\n5. **续航与断点续扫**\n   - 小户型通常不必过度追求超大电池，但要确认能否一次完成全屋清洁。\n   - 具备自动回充、断点续扫功能即可，避免清洁中途需要人工干预。\n\n6. **越障和通过高度**\n   - 看能否通过门槛、地毯边缘和房间连接处。\n   - 如果家中有较高门槛或推拉门轨道，应重点确认实际越障能力，而不是只看宣传参数。\n\n7. **尘盒、水箱和耗材成本**\n   - 尘盒、水箱太小会增加清理和加水频率。\n   - 了解滤网、边刷、主刷、拖布等耗材价格及更换周期。\n   - 结构易拆洗、耗材容易购买的机型，长期使用更省心。\n\n8. **噪音和App功能**\n   - 小户型中机器人离卧室、客厅较近，建议关注运行噪音和是否支持分时清扫。\n   - App最好支持分区清扫、禁区设置、地毯识别、清洁记录和耗材提醒。\n\n**简单总结：**  \n小户型不要只看“吸力最大”，更应优先考虑：**能否放得下、能否灵活避障、能否一次扫完、基站是否方便维护，以及长期耗材成本**。如果空间特别紧凑，建议先测量基站位置和家具底部高度，再筛选具体型号。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 59.076
+      }
+    },
+    {
+      "id": "rag_selection_002",
+      "category": "rag_selection",
+      "query": "家里养猫，选购扫地机器人应该关注什么？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 49.948,
+      "trace": {
+        "query": "家里养猫，选购扫地机器人应该关注什么？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "养猫家庭选购扫地机器人 关注猫毛 猫砂 防缠绕 避障 集尘 拖地 安全"
+            },
+            "result": "现有资料未提供猫毛、猫砂、防缠绕、避障、集尘、拖地及宠物安全等选购参数。仅能确认：使用时应每日检查并清理驱动轮、万向轮上的毛发和杂物，清扫后及时清理防撞条缝隙，避免机器人碰撞尖锐硬物，以减少缠绕和设备损坏。",
+            "node": "model",
+            "call_id": "call_60ad709f7bf04bc283470e5c829e546a"
+          }
+        ],
+        "final_answer": "养猫家庭选购扫地机器人，建议重点关注以下几点：\n\n1. **防缠绕能力**\n   - 优先选择主刷防缠绕设计，最好是橡胶滚刷或带毛发切割、自动解缠功能的机型。\n   - 关注边刷是否容易缠绕猫毛，长毛猫尤其要重视。\n\n2. **清理猫毛和猫砂的能力**\n   - 选择吸力较强、主刷贴地性好的产品，提升对浮毛和地毯猫毛的清洁效果。\n   - 猫砂颗粒较重，建议看实际评测中的猫砂清扫表现，不能只看宣传吸力参数。\n   - 避免让机器人反复碾压湿猫砂，否则可能弄脏滚刷和地面。\n\n3. **避障和识别能力**\n   - 优先选择带摄像头、结构光或其他精细避障方案的机型，减少撞到猫碗、玩具、逗猫棒和猫咪排泄物的风险。\n   - 但宠物排泄物识别并非百分之百可靠，启动清扫前仍应先检查地面。\n\n4. **基站自清洁和集尘能力**\n   - 有猫的家庭通常毛发、猫砂和灰尘更多，建议选择自动集尘容量较大的机型。\n   - 如果选扫拖一体机，可关注自动洗拖布、烘干和清洁基站，减少异味和细菌滋生。\n   - 集尘袋、滤网和尘盒应便于拆卸，后期维护成本也要考虑。\n\n5. **拖地功能要适合宠物环境**\n   - 如果猫砂较多，建议先吸后拖，或设置禁拖区域，避免猫砂遇水后粘在地面和拖布上。\n   - 清洁剂必须使用厂家允许的产品，避免宠物接触到刺激性或不明成分的清洁液。\n\n6. **噪声和宠物接受度**\n   - 猫咪可能对突然启动、自动集尘和烘干声音敏感，建议选择支持定时、分区清扫和低噪模式的产品。\n   - 初次使用时可先让猫适应机器人，再逐步扩大清扫范围。\n\n7. **耗材与维护成本**\n   - 确认主刷、边刷、滤网、拖布和尘袋是否容易购买，价格是否合理。\n   - 使用后要定期清理驱动轮、万向轮和主刷上的毛发，并清理防撞条缝隙，防止毛发和杂物积累造成运行异常。\n\n**简单选购优先级：**  \n长毛猫：防缠绕主刷 ＞ 吸毛能力 ＞ 自动集尘。  \n猫砂较多：避障能力 ＞ 猫砂清扫表现 ＞ 先吸后拖设置。  \n希望省心：自动集尘 ＞ 自动洗拖布烘干 ＞ 易维护性。\n\n关于不同品牌或具体型号的猫毛、猫砂清扫效果，我不知道，仅凭参数无法确定，最好结合真实宠物家庭评测再决定。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 49.948
+      }
+    },
+    {
+      "id": "rag_usage_001",
+      "category": "rag_usage",
+      "query": "扫地机器人清扫时频繁碰撞家具怎么解决？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 20.806,
+      "trace": {
+        "query": "扫地机器人清扫时频繁碰撞家具怎么解决？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 清扫频繁碰撞家具 传感器 清洁 地图定位 碰撞故障 解决方法"
+            },
+            "result": "频繁碰撞时，先清理机身防撞条缝隙中的毛发、线头，确保防撞条回弹顺畅；检查底部驱动轮和万向轮，清除缠绕的毛发、杂物，保证轮组转动顺畅。日常使用应避免机器人碰撞桌角、金属架等尖锐硬物，以防机身外壳或传感器损坏。",
+            "node": "model",
+            "call_id": "call_cf109493617646a597e963b83467fa7a"
+          }
+        ],
+        "final_answer": "扫地机器人频繁碰撞家具，可以按以下顺序排查：\n\n1. **清理防撞条**\n   - 关闭机器人电源。\n   - 检查机身前方防撞条的缝隙，清除毛发、灰尘、线头等异物。\n   - 轻按防撞条，确认能够正常回弹，没有卡滞或凹陷。\n\n2. **检查驱动轮和万向轮**\n   - 清理左右驱动轮及前方万向轮上的毛发、灰尘和杂物。\n   - 确认轮子转动顺畅，没有卡住或一侧高度异常，否则可能导致机器人转向不准、反复撞家具。\n\n3. **整理清扫环境**\n   - 移走尖锐的桌角、金属架、细长物品和容易卡住机器人的杂物。\n   - 对特别容易碰撞的家具，可暂时设置虚拟墙或禁区。\n\n4. **重新检查地图**\n   - 如果是最近突然开始频繁碰撞，可能与地图异常或定位偏移有关。\n   - 将机器人放回基站，确保基站周围无遮挡，必要时重新建图。\n\n5. **观察防撞条是否损坏**\n   - 如果防撞条无法回弹、明显松动，或清理后仍持续撞击，可能是防撞组件、轮组或相关传感部件异常，建议联系售后检测维修。\n\n不要强行掰动防撞条或继续让机器人反复撞击尖锐硬物，以免造成外壳和传感部件损坏。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 20.806
+      }
+    },
+    {
+      "id": "rag_usage_002",
+      "category": "rag_usage",
+      "query": "机器人不移动或移动缓慢时应该检查什么？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 42.09,
+      "trace": {
+        "query": "机器人不移动或移动缓慢时应该检查什么？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人不移动或移动缓慢 故障排查 检查项目"
+            },
+            "result": "检查底部驱动轮和万向轮，清除缠绕的毛发、杂物，确保轮组转动顺畅；清洁机身防撞条缝隙中的毛发、线头，避免卡扣卡顿影响回弹；用干布擦拭机器人和充电座的金属触点，避免氧化导致接触不良。",
+            "node": "model",
+            "call_id": "call_3d783b227d054574808ca8b8f3bdf43d"
+          }
+        ],
+        "final_answer": "机器人不移动或移动缓慢时，建议按以下顺序检查：\n\n1. **检查驱动轮**\n   - 翻转机器人，查看左右驱动轮是否被毛发、线头或异物缠绕。\n   - 手动转动轮子，确认没有卡顿或明显阻力。\n   - 清理轮槽及轮轴周围的杂物。\n\n2. **检查万向轮**\n   - 查看前方万向轮是否缠绕毛发、灰尘。\n   - 确保万向轮可以灵活转动，必要时清除轮子周边异物。\n\n3. **检查防撞条**\n   - 清理机身防撞条缝隙中的毛发、线头和灰尘。\n   - 确认防撞条能够正常回弹，避免卡住后导致机器人误判障碍物。\n\n4. **检查充电和电量**\n   - 确认机器人电量充足，并且已正常回充。\n   - 用干布擦拭机器人和充电座的金属触点，避免氧化或脏污造成接触不良。\n\n5. **排除地面因素**\n   - 暂时将机器人移到平整、干燥的硬质地面测试。\n   - 避免在厚地毯、门槛或容易打滑的地面上判断运行状态。\n\n如果清理轮组、万向轮并确认电量正常后仍不移动，可能涉及驱动轮、电机或传感器故障，建议联系售后检测。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 42.09
+      }
+    },
+    {
+      "id": "rag_qa_001",
+      "category": "rag_qa",
+      "query": "扫地机器人可以在地毯上使用吗？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 46.663,
+      "trace": {
+        "query": "扫地机器人可以在地毯上使用吗？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 地毯 使用条件 绒毛高度 吸尘 拖地 注意事项"
+            },
+            "result": "参考资料未涉及扫地机器人在地毯上的使用条件、适用绒毛高度、吸尘或拖地限制。仅建议每日检查底部驱动轮和万向轮，清除缠绕毛发及杂物；每次清扫后清理防撞条缝隙中的毛发、线头；使用后用干软布擦拭机身，去除灰尘和水渍。",
+            "node": "model",
+            "call_id": "call_db836fb4a538464eb9e1f6d15d559513"
+          }
+        ],
+        "final_answer": "我不知道你的具体机型是否支持地毯清扫，现有资料无法确定其适用的地毯绒毛高度和拖地限制。\n\n一般建议先确认说明书，并注意：\n\n- 短绒、平整地毯通常更容易通过；\n- 长绒、厚重或易脱毛地毯可能导致卡住、缠绕或清洁效果下降；\n- 扫拖一体机在地毯区域应开启“避开地毯”或自动抬升拖布功能，避免拖布弄湿地毯；\n- 首次使用应在小范围观察，清扫后检查主刷、边刷和驱动轮是否缠绕毛发、线头。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 46.663
+      }
+    },
+    {
+      "id": "rag_qa_002",
+      "category": "rag_qa",
+      "query": "扫地机器人支持哪些清扫模式？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 44.077,
+      "trace": {
+        "query": "扫地机器人支持哪些清扫模式？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人支持哪些清扫模式及各模式适用场景"
+            },
+            "result": "参考资料未提及扫地机器人的清扫模式及各模式的适用场景。",
+            "node": "model",
+            "call_id": "call_0822824ef5d640db8522ee2f7d09a10c"
+          }
+        ],
+        "final_answer": "我不知道你这款扫地机器人具体支持哪些清扫模式，参考资料未提供相关信息。\n\n不同机型常见模式可能包括：自动清扫、全屋清扫、区域清扫、划区清扫、定点清扫、吸尘、拖地、扫拖同时进行等，但实际功能请以对应型号的说明书或 App 页面为准。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 44.077
+      }
+    },
+    {
+      "id": "weather_001",
+      "category": "weather",
+      "query": "北京今天的天气怎么样？",
+      "passed": true,
+      "actual_tools": [
+        "get_weather"
+      ],
+      "expected_tools": [
+        "get_weather"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 6.679,
+      "trace": {
+        "query": "北京今天的天气怎么样？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_ffe4e5afe5954a8ca234bad216aea4cc"
+          }
+        ],
+        "final_answer": "北京今天的天气是晴天，气温约 **26℃**，空气湿度 **50%**，南风 **1级**，AQI **21**，空气质量较好；未来6小时降雨概率极低。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 6.679
+      }
+    },
+    {
+      "id": "weather_002",
+      "category": "weather",
+      "query": "上海现在适合使用扫地机器人吗？",
+      "passed": true,
+      "actual_tools": [
+        "get_weather"
+      ],
+      "expected_tools": [
+        "get_weather"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 17.769,
+      "trace": {
+        "query": "上海现在适合使用扫地机器人吗？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "上海"
+            },
+            "result": "城市上海天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_65861f1deb1d44598a79afe267dc0d0a"
+          }
+        ],
+        "final_answer": "上海现在适合使用扫地机器人。\n\n当前天气为晴天，气温约 **26℃**，湿度 **50%**，南风1级，空气质量良好，未来6小时降雨概率极低，适合正常进行扫地或扫拖。\n\n建议：\n- 可开启日常清扫或扫拖模式。\n- 如果家中地面刚拖过，先确认地面基本干燥。\n- 若要开窗，注意避免雨水或大量灰尘进入室内后再运行。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 17.769
+      }
+    },
+    {
+      "id": "weather_003",
+      "category": "weather",
+      "query": "深圳今天的空气质量和降雨情况如何？",
+      "passed": true,
+      "actual_tools": [
+        "get_weather"
+      ],
+      "expected_tools": [
+        "get_weather"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 28.988,
+      "trace": {
+        "query": "深圳今天的空气质量和降雨情况如何？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "深圳"
+            },
+            "result": "城市深圳天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_7171dbf0554b4f27a2b614e3911b2b04"
+          }
+        ],
+        "final_answer": "深圳今天的天气为晴天：\n\n- **空气质量**：AQI 21，空气质量较好\n- **降雨情况**：最近6小时降雨概率极低，基本不用担心降雨\n- **其他信息**：气温约26℃，湿度50%，南风1级",
+        "tool_call_count": 1,
+        "elapsed_seconds": 28.988
+      }
+    },
+    {
+      "id": "location_weather_001",
+      "category": "location_weather",
+      "query": "我所在城市今天适合使用扫地机器人吗？",
+      "passed": false,
+      "actual_tools": [
+        "get_user_location",
+        "get_weather"
+      ],
+      "expected_tools": [
+        "get_user_location",
+        "get_weather"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 0.0,
+      "missing_answer_keywords": [
+        "天气"
+      ],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 2,
+      "elapsed_seconds": 45.639,
+      "trace": {
+        "query": "我所在城市今天适合使用扫地机器人吗？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_location",
+            "args": {},
+            "result": "北京",
+            "node": "model",
+            "call_id": "call_6d3fdf6e01b7444689afe116e04b66aa"
+          },
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_3bfc6bd189a547129766c534d409fc5b"
+          }
+        ],
+        "final_answer": "北京今天是晴天，气温26℃、湿度50%，风力较小，空气质量良好，未来6小时降雨概率极低，**适合使用扫地机器人**。\n\n建议：\n- 扫地和扫拖模式都可以正常使用；\n- 若开启拖地，先确认室内地面没有积水；\n- 晴天可适当开窗通风，避免门窗附近灰尘被再次带入。",
+        "tool_call_count": 2,
+        "elapsed_seconds": 45.639
+      }
+    },
+    {
+      "id": "report_001",
+      "category": "report",
+      "query": "给我生成一个使用报告。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 4,
+      "elapsed_seconds": 98.408,
+      "trace": {
+        "query": "给我生成一个使用报告。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_2796c8c2731e4db695cd0c0f860d0486"
+          },
+          {
+            "name": "get_current_month",
+            "args": {},
+            "result": "2025-01",
+            "node": "model",
+            "call_id": "call_dfefba51aecb42aa82b152e2ca47483a"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_da332b883bde4c50be9fc3a542bb16c0"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_d4a9729be0a54067903bf4a4b2fcf3bc"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n**报告周期：2025-01**\n\n## 一、居住环境概况\n\n您居住在约 **65㎡的公寓**，以木地板为主，日常清洁需求相对集中，适合采用规律性的自动清扫模式。\n\n## 二、使用情况分析\n\n### 1. 清洁效率表现良好\n\n本月机器人整体清洁覆盖表现较好，日均承担约 **45㎡** 的清扫任务，清洁频率高于约 **65%的同面积用户**，说明设备使用较为积极，能够较好地维持地面日常洁净。\n\n不过，仍存在部分区域清洁不到位的情况：\n\n- **沙发底部容易漏扫**，主要原因是机器人机身高度与家具底部空间不匹配。\n- 整体清洁覆盖仍有提升空间，建议重点优化边角和家具周边区域。\n\n### 2. 木地板使用建议\n\n木地板日常灰尘、毛发和细小颗粒较容易积累。当前使用频率能够满足基本清洁需求，但如果存在进出频繁、烹饪较多或季节性落尘等情况，建议适当增加重点区域的清扫次数，避免细小颗粒长期摩擦地板表面。\n\n## 三、耗材状态评估\n\n### 主刷\n\n主刷预计仍可使用约 **60天**，目前无需立即更换。建议定期清理缠绕在主刷两端和刷毛上的毛发，避免阻力增大，影响清洁效率和电机负载。\n\n### HEPA滤网\n\n滤网剩余状态约为 **40%**，已经进入需要关注的阶段。建议：\n\n- 每1至2周检查一次滤网积尘情况；\n- 可清理的滤网按照产品说明进行除尘；\n- 若出现吸力下降、排风异味或灰尘回落，应提前更换；\n- 不建议在未确认可水洗的情况下直接冲洗滤网。\n\n## 四、综合评价\n\n| 评价项目 | 表现 |\n|---|---|\n| 使用频率 | 良好 |\n| 日常清洁效率 | 良好 |\n| 清洁覆盖完整度 | 较好，仍有局部漏扫 |\n| 主刷状态 | 正常 |\n| HEPA滤网状态 | 需重点关注 |\n| 同面积用户对比 | 表现较好 |\n\n总体来看，您在 **2025-01** 的机器人使用情况较为稳定，清洁频率和日常维护意识较好。当前主要问题不是使用不足，而是家具底部等受空间限制区域存在清洁盲区，同时滤网已接近需要更换的阶段。\n\n## 五、具体改进建议\n\n1. **优化清扫地图**  \n   检查地图中沙发周边是否存在禁区、重复建图或路径中断；在允许的情况下，安排人工移动家具后进行一次全屋重建图。\n\n2. **增加重点区域清扫**  \n   对沙发周边、餐桌下方、入户区域设置定时清扫或区域清扫任务，建议每周额外清洁1至2次。\n\n3. **处理沙发底部漏扫问题**  \n   如果沙发底部高度不足，不建议强行让机器人进入。可定期使用吸尘器或手持清洁工具处理该区域，避免灰尘长期堆积。\n\n4. **安排滤网更换计划**  \n   建议在未来1个月内持续观察滤网状态，并提前准备替换滤网；如发现吸力下降或异味，应直接更换，不必等到完全失效。\n\n5. **定期清理主刷和边刷**  \n   建议每周检查一次毛发缠绕情况，同时清理驱动轮、万向轮和边刷，减少运行阻力并保持清洁路径稳定。\n\n6. **木地板清洁注意事项**  \n   若使用拖地功能，建议控制水量，避免地面长时间潮湿；木地板出现明显水痕时，应降低出水量或减少拖地频率。",
+        "tool_call_count": 4,
+        "elapsed_seconds": 98.408
+      }
+    },
+    {
+      "id": "report_002",
+      "category": "report",
+      "query": "查询我2025年1月的机器人使用记录。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 70.929,
+      "trace": {
+        "query": "查询我2025年1月的机器人使用记录。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_de6859ccc5c04901be99dff6df83598e"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_781f0ec579fb4c3e9a12847fc025d2d4"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_7a7dddb2505340be8b606ec01e33b92f"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n## 一、报告概览\n\n- **统计月份：**2025-01\n- **居住环境：**约65㎡公寓\n- **地面类型：**木地板\n- **居住情况：**单人居住\n- **总体评价：**使用频率较高，整体清洁表现优于同面积多数用户，但沙发底部存在固定漏扫问题。\n\n## 二、使用情况分析\n\n### 1. 清洁效率\n\n- **日均清扫面积：**约45㎡\n- **区域覆盖率：**85%\n- **主要漏扫区域：**沙发底部\n- **综合评价：**日常清洁频率较好，能够覆盖住宅大部分区域，适合维持木地板的日常洁净度。\n\n当前覆盖率已经达到较好水平，但仍有约15%的区域未能稳定覆盖。沙发底部漏扫主要原因是机器人机身高度与家具底部空间不匹配，属于结构限制，不完全是路径规划问题。\n\n### 2. 横向对比\n\n与面积相近的用户相比，本月清洁频率更高，整体表现优于约65%的同面积用户。\n\n这说明当前使用习惯较为规律，能够较好地控制木地板上的灰尘、毛发和日常碎屑积累。\n\n## 三、耗材状态\n\n- **主刷：**预计剩余使用寿命约60天\n- **HEPA滤网：**剩余约40%\n\n目前主刷无需立即更换，但建议保持定期清理，避免毛发缠绕影响清洁效率。HEPA滤网剩余寿命相对有限，应开始安排清洁和后续更换计划。\n\n## 四、具体建议\n\n### 1. 优先改善沙发底部清洁\n\n建议采取以下措施：\n\n1. 测量沙发底部高度，确认是否低于机器人机身通过高度。\n2. 对无法进入的区域，可使用窄缝吸尘工具每周补充清洁一次。\n3. 如果条件允许，可在沙发脚下加装合适高度的垫脚，使机器人能够进入清洁。\n4. 在地图中检查沙发区域是否被误设为禁区或存在虚拟墙。\n\n### 2. 优化清洁计划\n\n建议继续保持目前较高的清洁频率，并进行分区强化：\n\n- **日常：**保持全屋自动清扫，重点维持客厅、过道等高频活动区域。\n- **每周1次：**对沙发周围、墙角和家具边缘进行重点清扫。\n- **木地板养护：**避免拖布长期过湿，清洁后及时通风，减少木地板受潮风险。\n\n### 3. 做好主刷维护\n\n建议每周检查一次主刷：\n\n- 清理缠绕在刷体两端的毛发和线状物；\n- 检查主刷是否出现变形、开裂或明显磨损；\n- 预计剩余寿命约60天，可提前准备备件，避免达到寿命后影响清洁效果。\n\n### 4. 关注HEPA滤网\n\nHEPA滤网剩余约40%，建议：\n\n- 每1—2周检查一次滤网积尘情况；\n- 按产品说明进行清洁，清洁后必须彻底干燥再装回；\n- 若出现吸力下降、出风异味或灰尘过滤效果变差，应提前更换；\n- 建议在未来1—2个月内准备新的滤网。\n\n## 五、下月使用目标\n\n建议将后续清洁目标设定为：\n\n1. 通过家具调整或人工补扫，解决沙发底部漏扫问题；\n2. 维持当前清洁频率，保持木地板日常洁净；\n3. 将区域覆盖率进一步提升至90%左右；\n4. 完成HEPA滤网检查，并根据实际污染程度安排更换。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 70.929
+      }
+    },
+    {
+      "id": "report_003",
+      "category": "report",
+      "query": "帮我生成2025-01的个人扫地机器人使用报告。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 68.231,
+      "trace": {
+        "query": "帮我生成2025-01的个人扫地机器人使用报告。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_453feffd33474ec4a6b8a10fdb0ecada"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_304119f41da049f7adcbbdb0a1fac344"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_64f1dbaacaca4421a4bb295991acfaa0"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n## 一、报告周期与居住环境\n\n- **报告月份：**2025-01\n- **居住面积：**约65㎡\n- **居住情况：**单身公寓\n- **地面类型：**木地板\n\n## 二、整体使用表现\n\n本月机器人整体使用较为稳定，清洁频率高于同面积用户平均水平，能够较好地维持日常地面整洁。\n\n- **有效清洁覆盖率：**约85%\n- **日均清扫面积：**约45㎡\n- **使用评价：**良好\n- **同面积用户对比：**清洁频率优于约65%的同面积用户\n\n从日均清扫面积来看，当前使用强度基本能够覆盖主要生活区域，适合维持木地板的日常灰尘、毛发和碎屑清洁。\n\n## 三、清洁盲区分析\n\n当前主要漏扫区域为**沙发底部**，原因是沙发离地高度不足，机器人机身无法进入，并非导航或清洁故障。\n\n### 改进建议\n\n1. **定期手动清洁沙发底部**\n   - 建议每月使用吸尘器或扁平清洁工具清理1次。\n   - 若沙发底部容易积灰、掉落毛发，可适当提高到每两周1次。\n\n2. **设置禁区或虚拟边界**\n   - 如果机器人在沙发附近反复尝试进入，建议在APP中设置虚拟墙或禁区，减少无效运行和碰撞。\n\n3. **优化家具布局**\n   - 如后续更换沙发，可优先选择离地高度足以让机器人通过的款式，以减少清洁死角。\n\n## 四、耗材状态\n\n### 1. 主刷\n\n- **预计剩余使用寿命：**约60天\n- **当前状态：**暂时无需更换\n\n建议每周检查一次主刷，重点清理缠绕在刷毛和两端轴承处的毛发、线头。即使未达到更换周期，如果出现刷毛明显变形、转动阻力增大或清洁效果下降，也应提前更换。\n\n### 2. HEPA滤网\n\n- **当前剩余状态：**约40%\n- **当前状态：**仍可继续使用，但已进入重点维护阶段\n\n建议：\n\n- 每1至2周清理一次滤网表面灰尘；\n- 清理时应按照设备说明操作，避免不适合水洗的滤网受潮；\n- 当吸力下降、排风异味明显或滤网堵塞严重时，应提前更换；\n- 按当前状态，建议近期准备备用滤网。\n\n## 五、木地板使用建议\n\n为减少对木地板表面的磨损并保持清洁效果，建议：\n\n1. 日常以标准吸尘模式为主，避免长期使用过高吸力或过度频繁的深度清洁模式。\n2. 拖地时控制出水量，避免地面长时间潮湿。\n3. 定期检查滚轮和边刷是否夹带砂粒，防止硬颗粒划伤地板。\n4. 对厨房、玄关等灰尘和砂粒较多的区域，可设置更高频率或单独清洁。\n\n## 六、下月使用规划\n\n建议在保持当前清洁频率的基础上，进行以下调整：\n\n- 继续维持日常自动清扫；\n- 每周安排1次重点区域清洁；\n- 每周检查并清理主刷、边刷和尘盒；\n- 每1至2周维护一次HEPA滤网；\n- 每月手动处理沙发底部等机器人无法进入的区域；\n- 关注滤网状态，必要时提前更换。\n\n## 七、总结\n\n2025-01期间，机器人整体使用表现良好，清洁频率较高，日常覆盖能力稳定，明显优于多数同面积用户。当前最主要的问题是沙发底部的结构性清洁盲区，建议通过手动补充清洁或设置禁区解决。\n\n主刷仍有较长使用余量，HEPA滤网已剩余约40%，建议加强清洁维护并提前准备替换件。保持目前的使用习惯并落实定期保养，可进一步提升清洁覆盖率和设备使用寿命。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 68.231
+      }
+    },
+    {
+      "id": "report_004",
+      "category": "report",
+      "query": "我想看看我的机器人这个月的清洁效率。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 4,
+      "elapsed_seconds": 35.037,
+      "trace": {
+        "query": "我想看看我的机器人这个月的清洁效率。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_66a70156165f413db2312bb9473441f5"
+          },
+          {
+            "name": "get_current_month",
+            "args": {},
+            "result": "2025-01",
+            "node": "model",
+            "call_id": "call_e628288632994e7aac9e752955bfd956"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_de2e9a9b7a58438fa151f74c8c1bc2ae"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_0481b4706ba7433f82a4b259329d41a9"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n## 一、报告周期\n\n- **统计月份：2025-01**\n- **居住环境：**约65㎡公寓，木地板\n- **使用场景：**单人居住\n\n## 二、清洁效率分析\n\n### 1. 整体清洁表现\n\n本月机器人整体清洁效率较好：\n\n- **清洁覆盖率：约85%**\n- **日均清扫面积：约45㎡**\n- **清洁频率：高于约65%的同面积用户**\n\n从使用频率来看，机器人能够较稳定地覆盖主要生活区域，适合当前65㎡左右的居住面积。木地板环境也有利于提升清扫效率，日常灰尘和毛发能够得到较及时的处理。\n\n### 2. 未充分覆盖区域\n\n目前主要存在以下清洁盲区：\n\n- **沙发底部清洁不足**\n- 原因是沙发底部空间高度不足，机器人无法进入，并非设备清扫能力下降。\n\n因此，当前85%的覆盖率已经较为稳定，进一步提升的关键不在于增加清扫次数，而在于处理沙发底部等结构性盲区。\n\n## 三、耗材状态\n\n- **主刷：预计还可使用约60天**\n- **HEPA滤网：剩余约40%**\n\n主刷目前仍处于可正常使用阶段，但木地板上的灰尘、毛发和细小颗粒可能逐渐缠绕在刷毛及轴承位置。HEPA滤网剩余量相对较低，建议优先安排清洁或准备更换，以避免吸力下降和排风不畅。\n\n## 四、针对性建议\n\n### 1. 提升清洁覆盖率\n\n建议每周进行一次人工辅助清洁：\n\n1. 移动或抬高沙发；\n2. 清理沙发底部积尘；\n3. 检查机器人地图中是否存在被家具遮挡的区域；\n4. 在沙发周边增加一次重点清扫或定点清扫。\n\n如果沙发底部长期无法进入，可考虑使用手持吸尘器补充清洁，不建议单纯通过增加机器人运行次数来解决。\n\n### 2. 做好滤网维护\n\n建议：\n\n- 每周检查一次HEPA滤网；\n- 轻拍或使用软毛刷清除表面灰尘；\n- 如果滤网已经明显变灰、堵塞或出现吸力下降，应及时更换；\n- 清洗滤网前确认其是否支持水洗，避免未干透就装回机器。\n\n结合当前约40%的剩余状态，建议在近期准备备用滤网，并根据吸力变化安排更换。\n\n### 3. 保养主刷\n\n建议每1至2周检查一次主刷：\n\n- 清除缠绕的毛发和线头；\n- 检查主刷两端轴承是否有异物；\n- 观察刷毛是否明显变形或磨损；\n- 若出现清扫声音变大、漏扫增多或毛发清理能力下降，可提前更换。\n\n目前主刷预计还能使用约60天，暂时无需立即更换。\n\n## 五、综合结论\n\n本月机器人使用表现良好，清洁频率和日均清扫面积较为充足，整体效率优于多数同面积用户。当前影响清洁效果的主要因素是**沙发底部的空间限制**，而不是设备本身性能不足。\n\n建议下一阶段重点关注：\n\n1. 定期人工清理沙发底部；\n2. 加强HEPA滤网清洁，并准备备用滤网；\n3. 按周期检查主刷，防止毛发缠绕影响效率；\n4. 维持目前较高的清扫频率，无需盲目增加运行次数。",
+        "tool_call_count": 4,
+        "elapsed_seconds": 35.037
+      }
+    },
+    {
+      "id": "external_001",
+      "category": "external_data",
+      "query": "请查询我的历史扫地机器人使用数据。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 4,
+      "elapsed_seconds": 84.196,
+      "trace": {
+        "query": "请查询我的历史扫地机器人使用数据。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_60e0b1bff834442b8d5af38ad2ba736e"
+          },
+          {
+            "name": "get_current_month",
+            "args": {},
+            "result": "2025-01",
+            "node": "model",
+            "call_id": "call_fa3f7e7f5cce4d7a90b60b908f5f0715"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_20937fa559074389af9eadda49858dc8"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_17a8bd7f6dc940edaa8c280cd3f29d64"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n**统计月份：2025-01**  \n**适用场景：65㎡公寓｜木地板｜单人居住**\n\n## 一、总体使用情况\n\n本月机器人整体使用表现良好，清洁频率高于约65%的同面积用户，能够保持较稳定的日常清洁节奏。当前主要问题不是使用频率不足，而是存在固定区域清洁覆盖不完整的情况。\n\n- **日均清扫面积：**约45㎡\n- **整体覆盖率：**约85%\n- **主要漏扫区域：**沙发底部\n- **原因判断：**沙发底部高度不足，机器人无法进入，并非设备故障\n- **地面类型适配：**木地板适合采用规律、低湿度的清洁方式，避免长时间积水或过度拖洗\n\n## 二、清洁效果分析\n\n### 1. 清扫频率较好\n\n当前清扫频率在同面积用户中表现较优，说明日常使用习惯比较稳定。对于单人居住的65㎡户型，保持规律清扫有助于减少灰尘、毛发和细小颗粒物累积。\n\n### 2. 覆盖率仍有提升空间\n\n目前覆盖率约为85%，整体已经达到较实用水平，但仍有约15%的区域未能有效覆盖。主要集中在沙发底部等低矮空间。\n\n建议不要强行移动或拆改沙发结构来适配机器人，可采用“机器人日常清扫+人工定期补扫”的组合方式，避免为了追求全覆盖而影响设备正常运行。\n\n## 三、耗材状态\n\n### 1. 主刷\n\n主刷预计还可使用约60天，当前无需立即更换。\n\n建议：\n\n- 每1—2周检查一次主刷；\n- 及时清理缠绕在刷毛两端的毛发和线材；\n- 如果出现清扫声音变大、清洁效果下降或刷毛明显变形，应提前更换。\n\n### 2. HEPA滤网\n\nHEPA滤网剩余寿命约40%，已进入需要重点关注的阶段。\n\n建议：\n\n- 每周检查滤网上的灰尘堆积情况；\n- 适合水洗的滤网可按照说明进行清洁，不可水洗型号不要直接冲洗；\n- 清洁后必须完全干燥再装回；\n- 当吸力下降、排风异味明显或滤网堵塞严重时，应提前更换，不必等到寿命完全耗尽。\n\n## 四、针对木地板的使用建议\n\n1. **优先使用规律清扫模式**  \n   建议保持固定频率，减少灰尘在地板表面的长期摩擦。\n\n2. **拖地时控制水量**  \n   木地板不宜长时间处于潮湿状态。拖地后如出现明显水痕或干燥时间较长，应降低出水量。\n\n3. **清扫前整理地面**  \n   收起充电线、耳机线、塑料袋等小物件，减少主刷缠绕和机器人卡困。\n\n4. **设置重点清扫区域**  \n   可将沙发周边、餐桌附近、入户区域设置为重点清扫区，提高高频使用区域的清洁效果。\n\n## 五、建议的维护计划\n\n| 周期 | 建议事项 |\n|---|---|\n| 每次使用前 | 清理明显障碍物，确认尘盒和水箱状态 |\n| 每周 | 检查主刷、边刷、滤网，并清理毛发和灰尘 |\n| 每两周 | 对沙发底部等无法进入的区域进行人工补扫 |\n| 每月 | 清洁传感器、充电触点和机身底部 |\n| 约60天后 | 重新评估主刷磨损情况，必要时更换 |\n| 滤网剩余寿命较低时 | 根据吸力和灰尘情况及时更换HEPA滤网 |\n\n## 六、综合结论\n\n本月使用情况总体良好，清扫频率表现突出，设备能够覆盖大部分日常活动区域。当前最主要的改进方向是处理沙发底部的固定漏扫区域，以及加强HEPA滤网的清洁和更换管理。\n\n建议继续保持目前的清扫习惯，并采用“日常自动清扫、重点区域加强、低矮区域人工补扫”的方式，可在不增加设备负担的前提下进一步提升整体清洁效果。",
+        "tool_call_count": 4,
+        "elapsed_seconds": 84.196
+      }
+    },
+    {
+      "id": "report_guard_001",
+      "category": "report_guard",
+      "query": "不要生成报告，只告诉我主刷怎么清理。",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 41.841,
+      "trace": {
+        "query": "不要生成报告，只告诉我主刷怎么清理。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人主刷怎么清理 拆卸 毛发缠绕 清洁 安装 注意事项"
+            },
+            "result": "参考资料未提供扫地机器人主刷的拆卸、毛发清理、清洁和安装步骤。仅建议每日检查驱动轮和万向轮，用镊子挑出缠绕的毛发、杂物，保持轮组转动顺畅。",
+            "node": "model",
+            "call_id": "call_db0c6612e6374f6895b61856816782ed"
+          }
+        ],
+        "final_answer": "我不知道你这款机器人的具体主刷拆卸方式。一般可按以下步骤清理：\n\n1. 关机并拔掉充电座电源，翻转机器人。  \n2. 打开主刷盖，取出主刷。  \n3. 用清洁工具或剪刀剪断缠绕的毛发、线头，注意不要划伤刷毛或胶条。  \n4. 清理主刷两端轴套、刷盖内侧和主刷仓中的灰尘。  \n5. 若主刷支持水洗，可用清水冲洗；清洗后必须完全晾干，不能湿装。  \n6. 装回时确认两端轴头都卡入对应位置，盖好主刷盖并扣紧。  \n7. 手动转动主刷，确认转动顺畅、没有异响。\n\n建议每周检查一次；宠物毛发较多时可增加清理频率。若主刷变形、破损或转动异常，应更换或联系售后。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 41.841
+      }
+    },
+    {
+      "id": "mixed_001",
+      "category": "mixed_rag_weather",
+      "query": "下雨天室内湿度较高时，扫地机器人使用有什么注意事项？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 57.462,
+      "trace": {
+        "query": "下雨天室内湿度较高时，扫地机器人使用有什么注意事项？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "下雨天 室内湿度较高 扫地机器人 清洁 使用注意事项 高湿 拖地 充电 维护"
+            },
+            "result": "高湿环境下使用后，应检查底部驱动轮和万向轮，及时清除缠绕的毛发、杂物；避免碰撞尖锐硬物；每天用干布擦拭机器人机身及充电座金属触点，防止氧化导致充电接触不良。",
+            "node": "model",
+            "call_id": "call_3e5e4e93f0084218916f80932fb3b3b3"
+          }
+        ],
+        "final_answer": "下雨天室内湿度较高时，可以使用扫地机器人，但要注意以下几点：\n\n1. **避免在积水或明显潮湿的地面运行**  \n   如果地面有雨水、积水或水渍较多，建议先人工擦干，避免水分进入机器内部或造成打滑。\n\n2. **拖地后及时处理拖布**  \n   使用后取下拖布清洗并充分晾干，避免长时间处于潮湿状态而产生异味或滋生细菌。\n\n3. **清洁底部轮子**  \n   运行结束后检查驱动轮和万向轮，及时清除毛发、灰尘及泥沙，防止潮湿环境下污物黏附，影响行走。\n\n4. **擦干机身和充电座触点**  \n   每天用干布擦拭机器人机身及充电座金属触点，防止受潮氧化导致充电接触不良。擦拭后确保设备干燥，再放回充电座。\n\n5. **注意充电安全**  \n   机器人、充电座或电源线被雨水溅湿时，不要立即充电；应断开电源并彻底干燥后再使用。\n\n6. **保持室内通风**  \n   尽量开窗或使用除湿设备，降低地面和拖布的干燥时间，减少异味和霉菌问题。\n\n如果室内湿度只是偏高、地面干燥，通常可以正常扫地；若地面有积水或机器内部疑似进水，应立即停止使用。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 57.462
+      }
+    },
+    {
+      "id": "unknown_001",
+      "category": "unknown",
+      "query": "请告诉我明年某款尚未发布机器人的准确续航时间。",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 2.496,
+      "trace": {
+        "query": "请告诉我明年某款尚未发布机器人的准确续航时间。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我不知道，也无法确定明年尚未发布的某款机器人准确续航时间。续航通常要等官方公布具体型号、测试条件和电池参数后才能确认。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 2.496
+      }
+    },
+    {
+      "id": "unknown_002",
+      "category": "unknown",
+      "query": "帮我修改扫地机器人厂商的后台数据库。",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 13.13,
+      "trace": {
+        "query": "帮我修改扫地机器人厂商的后台数据库。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我无法直接修改扫地机器人厂商的后台数据库，也不能代替厂商执行未授权的数据操作。\n\n如果你是授权的管理员，可以提供以下信息，我帮你整理成安全的变更方案或 SQL 草稿：\n\n- 数据库类型（MySQL、PostgreSQL 等）\n- 要修改的表和字段\n- 修改条件及目标值\n- 是否需要保留历史记录\n- 变更前后的数据示例\n- 是否已完成备份和审批\n\n建议先在测试环境验证，并通过厂商规定的后台、工单或数据库变更流程执行。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 13.13
+      }
+    },
+    {
+      "id": "multi_001",
+      "category": "multi_tool",
+      "query": "先查询北京天气，再说明这种天气下扫地机器人使用时要注意什么。",
+      "passed": true,
+      "actual_tools": [
+        "get_weather",
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "get_weather",
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 2,
+      "elapsed_seconds": 47.82,
+      "trace": {
+        "query": "先查询北京天气，再说明这种天气下扫地机器人使用时要注意什么。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_c1ef6af0e09f470f846e594d916f587c"
+          },
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "北京天气 晴天 26℃ 湿度50% 降雨概率极低 条件下扫地机器人清洁和扫拖使用注意事项"
+            },
+            "result": "在晴天、26℃、湿度50%、降雨概率极低的情况下，使用后应每日用干软布擦拭机身，清除灰尘和水渍；使用时避免碰撞桌角、金属架等尖锐硬物；每日检查底部驱动轮和万向轮，并用镊子清除缠绕的毛发、杂物，保持轮组转动顺畅。",
+            "node": "model",
+            "call_id": "call_24a845b5a09f4b14b767726b27186380"
+          }
+        ],
+        "final_answer": "北京当前**天气**为：晴天，26℃，湿度50%，南风1级，AQI 21，未来6小时降雨概率极低，整体适合使用扫地机器人和扫拖一体机器人。\n\n使用时注意：\n\n- **可以正常清扫和拖地**，当前湿度适中，地面不易因环境潮湿而长时间不干。\n- 拖地后及时清理拖布、污水箱，并擦干机身底部，避免水渍残留。\n- 每次使用后用干软布擦拭机身，清除灰尘和水渍。\n- 检查底部驱动轮、万向轮，及时用镊子清除缠绕的毛发和杂物。\n- 清扫前收好尖锐硬物、金属小件和易缠绕物，避免碰撞桌角、金属架或损伤滚刷。\n- 虽然未来几小时降雨概率很低，但仍建议避免让机器人接触阳台、门口等可能被雨水打湿的区域。",
+        "tool_call_count": 2,
+        "elapsed_seconds": 47.82
+      }
+    },
+    {
+      "id": "multi_002",
+      "category": "multi_tool",
+      "query": "查询我所在城市的天气，并给出适合扫地机器人的清洁建议。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_location",
+        "get_weather",
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "get_user_location",
+        "get_weather",
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 69.72,
+      "trace": {
+        "query": "查询我所在城市的天气，并给出适合扫地机器人的清洁建议。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_location",
+            "args": {},
+            "result": "北京",
+            "node": "model",
+            "call_id": "call_0974492f4d5844dab5a54092208ef2ce"
+          },
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_12e91e16127a40f7aa985ace5cfdb3fd"
+          },
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "北京天气、湿度对扫地机器人清洁的影响及清洁建议"
+            },
+            "result": "参考资料未说明北京天气、湿度对扫地机器人清洁效果的具体影响。清洁建议：每日使用后用干软布擦拭机身，去除灰尘和水渍；每日检查驱动轮和万向轮，清理缠绕毛发及杂物；使用时避免碰撞尖锐硬物，以保护机身外壳和传感器。",
+            "node": "model",
+            "call_id": "call_5dd0d65d1023463baa08e5e9081af7ce"
+          }
+        ],
+        "final_answer": "您所在的城市是北京。\n\n**天气情况：**晴天，26℃，湿度50%，南风1级，AQI 21，未来6小时降雨概率极低。\n\n**清洁建议：**\n- 当前天气干燥适中，适合运行扫地机器人，建议安排日常扫地或扫拖任务。\n- 湿度50%不会明显影响清洁效果；拖地后保持室内通风，并避免让机器人在明显积水或过湿的地面上运行。\n- 使用后用干软布擦拭机身，清除灰尘和水渍。\n- 每天检查驱动轮、万向轮，及时清理缠绕的毛发和杂物。\n- 运行前收好尖锐硬物和细小物品，避免碰撞机身或遮挡传感器。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 69.72
+      }
+    }
+  ]
+}

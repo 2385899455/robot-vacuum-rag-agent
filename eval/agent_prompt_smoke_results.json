@@ -1,0 +1,691 @@
+{
+  "created_at": "2026-10-26T18:15:44",
+  "question_file": "/tmp/agent_prompt_smoke.jsonl",
+  "evaluation_elapsed_seconds": 463.443,
+  "metrics": {
+    "question_count": 10,
+    "passed": 6,
+    "pass_rate": 0.6,
+    "tool_selection_accuracy": 0.9,
+    "tool_order_accuracy": 0.9,
+    "order_preserved_rate": 1.0,
+    "argument_accuracy": 1.0,
+    "answer_keyword_hit_rate": 0.85,
+    "forbidden_tool_rate": 1.0,
+    "within_tool_call_limit_rate": 0.9,
+    "error_rate": 0.0,
+    "average_tool_calls": 1.7,
+    "average_elapsed_seconds": 46.344
+  },
+  "metrics_by_category": {
+    "direct_answer": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 0.0,
+      "average_elapsed_seconds": 9.807
+    },
+    "location_weather": {
+      "question_count": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "tool_selection_accuracy": 0.0,
+      "tool_order_accuracy": 0.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 0.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 3.0,
+      "average_elapsed_seconds": 57.066
+    },
+    "multi_tool": {
+      "question_count": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 2.5,
+      "average_elapsed_seconds": 55.584
+    },
+    "rag_fault": {
+      "question_count": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 1.0,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 42.984
+    },
+    "report": {
+      "question_count": 2,
+      "passed": 1,
+      "pass_rate": 0.5,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 0.75,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 3.5,
+      "average_elapsed_seconds": 100.439
+    },
+    "unknown": {
+      "question_count": 2,
+      "passed": 1,
+      "pass_rate": 0.5,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 0.75,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 0.0,
+      "average_elapsed_seconds": 17.11
+    },
+    "weather": {
+      "question_count": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "tool_selection_accuracy": 1.0,
+      "tool_order_accuracy": 1.0,
+      "order_preserved_rate": 1.0,
+      "argument_accuracy": 1.0,
+      "answer_keyword_hit_rate": 0.5,
+      "forbidden_tool_rate": 1.0,
+      "within_tool_call_limit_rate": 1.0,
+      "error_rate": 0.0,
+      "average_tool_calls": 1.0,
+      "average_elapsed_seconds": 7.32
+    }
+  },
+  "results": [
+    {
+      "id": "direct_001",
+      "category": "direct_answer",
+      "query": "你好",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 9.807,
+      "trace": {
+        "query": "你好",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "你好！我是扫地机器人和扫拖一体机器人的智能客服。请问您想咨询清洁设置、故障排查、维护保养，还是天气对使用机器人的影响？",
+        "tool_call_count": 0,
+        "elapsed_seconds": 9.807
+      }
+    },
+    {
+      "id": "rag_fault_001",
+      "category": "rag_fault",
+      "query": "机器人无法连接WiFi时应该如何排查？",
+      "passed": true,
+      "actual_tools": [
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 42.984,
+      "trace": {
+        "query": "机器人无法连接WiFi时应该如何排查？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "扫地机器人 无法连接WiFi 排查 2.4GHz 配网 网络权限 重置"
+            },
+            "result": "参考资料未提供扫地机器人连接WiFi、2.4GHz配网、网络权限或重置相关的排查方法，仅涉及驱动轮、充电触点和防撞条的清洁维护。",
+            "node": "model",
+            "call_id": "call_1871890ed59a4957a049b7a43107f32f"
+          }
+        ],
+        "final_answer": "我不知道你这台机器的具体品牌和型号，因此无法确认其专属配网要求。可以先按以下通用步骤排查：\n\n1. **确认 WiFi 频段**  \n   许多扫地机器人仅支持 **2.4GHz WiFi**，不支持 5GHz。可暂时关闭双频合一，单独连接 2.4GHz 网络。\n\n2. **检查密码和网络名称**  \n   - 重新输入 WiFi 密码，注意大小写及特殊字符。  \n   - WiFi 名称尽量使用简单的字母或数字，避免中文、空格和特殊符号。  \n   - 不要连接需要网页认证的公共 WiFi。\n\n3. **确认手机连接状态**  \n   手机应连接到准备给机器人使用的 2.4GHz WiFi，并开启 App 的定位、蓝牙及局域网权限。部分手机在配网时需要暂时关闭移动数据或 VPN。\n\n4. **缩短距离并重启设备**  \n   将机器人、手机和路由器放近一些，然后依次重启路由器、机器人和 App，再重新配网。\n\n5. **检查路由器限制**  \n   确认未开启以下限制：  \n   - MAC 地址过滤  \n   - 访客网络隔离  \n   - AP 隔离  \n   - 设备数量上限  \n   - WPA3-only 加密  \n   \n   可尝试使用 WPA2-PSK 或 WPA2/WPA3 混合模式。\n\n6. **重新进入配网模式**  \n   按说明书同时长按指定的两个按键，直到听到“进入配网模式”或看到 WiFi 指示灯闪烁，再在 App 中添加设备。不同型号的按键组合不同，不要盲目长按。\n\n7. **恢复网络设置**  \n   如果机器人曾连接过其他路由器，先执行“重置 WiFi/网络设置”，再重新添加设备。注意这通常只清除网络信息，不一定会删除地图，但具体情况以说明书为准。\n\n8. **仍无法连接时**  \n   记录 App 提示的错误代码，尝试用手机热点测试：热点名称和密码设为简单英文/数字，并优先使用 2.4GHz。若热点也无法连接，可能是机器人 WiFi 模块、固件或 App 兼容性问题，建议联系品牌售后。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 42.984
+      }
+    },
+    {
+      "id": "weather_001",
+      "category": "weather",
+      "query": "北京今天的天气怎么样？",
+      "passed": false,
+      "actual_tools": [
+        "get_weather"
+      ],
+      "expected_tools": [
+        "get_weather"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 0.5,
+      "missing_answer_keywords": [
+        "天气"
+      ],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 1,
+      "elapsed_seconds": 7.32,
+      "trace": {
+        "query": "北京今天的天气怎么样？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_63684fd1e4d4441aa1ee89125672ee80"
+          }
+        ],
+        "final_answer": "北京今天是**晴天**，气温约 **26℃**，空气湿度 **50%**，南风 **1级**，AQI **21**，空气质量较好；未来6小时**降雨概率极低**。",
+        "tool_call_count": 1,
+        "elapsed_seconds": 7.32
+      }
+    },
+    {
+      "id": "location_weather_001",
+      "category": "location_weather",
+      "query": "我所在城市今天适合使用扫地机器人吗？",
+      "passed": false,
+      "actual_tools": [
+        "get_user_location",
+        "get_weather",
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "get_user_location",
+        "get_weather"
+      ],
+      "selection_exact": false,
+      "order_correct": false,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": false,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 57.066,
+      "trace": {
+        "query": "我所在城市今天适合使用扫地机器人吗？",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_location",
+            "args": {},
+            "result": "北京",
+            "node": "model",
+            "call_id": "call_89cdf05ab3a2420fae10cd94741760fb"
+          },
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_fb75fa1f76804d2b8d70c77a5dbf38b2"
+          },
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "天气 清洁 湿度 北京 晴天 低降雨概率 扫地机器人 扫拖一体 使用建议"
+            },
+            "result": "使用扫拖一体机器人后，每日用干软布擦拭机身，去除灰尘和水渍；同时检查底部驱动轮、万向轮，清理缠绕的毛发和杂物，并避免碰撞尖锐硬物。",
+            "node": "model",
+            "call_id": "call_03f5d18c020c498c9929ede4fe2cf07e"
+          }
+        ],
+        "final_answer": "今天北京适合使用扫地机器人。\n\n- **天气**：晴天，26℃，湿度50%，未来6小时降雨概率极低，适合正常清扫和拖地。\n- **空气质量**：AQI 21，空气较好，适合日常清洁。\n- **使用建议**：可正常安排扫拖任务；拖地后及时清空污水箱、清洗拖布，并用干软布擦拭机身和底部。运行前检查驱动轮、万向轮是否缠绕毛发或杂物。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 57.066
+      }
+    },
+    {
+      "id": "report_001",
+      "category": "report",
+      "query": "给我生成一个使用报告。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "get_current_month",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 4,
+      "elapsed_seconds": 118.849,
+      "trace": {
+        "query": "给我生成一个使用报告。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_53e55d56cc1f43b9aa7bf6652ccd86f0"
+          },
+          {
+            "name": "get_current_month",
+            "args": {},
+            "result": "2025-01",
+            "node": "model",
+            "call_id": "call_7272df8197374546967b5562ee9c4a32"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_fa1d9517a5824e65aabd4ecc1d7bbcc2"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_5e7dc9b5ffed4373b04e62926985ae5c"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n**报告周期：2025年1月**  \n**居住环境：约65㎡公寓，木地板，单人居住**\n\n## 一、整体使用情况\n\n本月机器人整体使用表现较好，清洁频率高于约65%的同面积用户，能够较稳定地维持日常地面清洁。\n\n- **日均清扫面积：**约45㎡\n- **整体覆盖率：**约85%\n- **主要漏扫区域：**沙发底部\n- **清洁适配性：**木地板环境与当前清扫模式匹配度较高\n\n从使用情况来看，当前设备基本能够覆盖主要活动区域，但仍有少量区域存在清洁盲区，主要原因是沙发底部高度不足，机器人无法正常进入。\n\n## 二、清洁效率分析\n\n### 1. 清洁频率较为合理\n\n当前清洁频率高于多数同面积用户，说明日常使用习惯较好。对于单人居住、面积约65㎡的公寓而言，保持规律清扫有助于减少灰尘、毛发和细小颗粒物的积累。\n\n### 2. 覆盖率仍有提升空间\n\n目前清洁覆盖率为85%，整体表现良好，但尚未达到较完整覆盖水平。沙发底部是主要漏扫区域，如果该区域长期无法清洁，容易积累灰尘、毛发和絮状物。\n\n建议重点关注：\n\n- 沙发底部及周边区域\n- 沙发与墙角连接处\n- 机器人无法进入的低矮家具底部\n- 房间边角和家具密集区域\n\n## 三、耗材状态\n\n### 1. 主刷\n\n- **预计剩余寿命：**约60天\n\n主刷当前仍处于可正常使用阶段，暂时不需要立即更换。但建议定期清理缠绕在刷毛和刷轴两端的毛发，避免阻力增大、清扫效率下降。\n\n### 2. HEPA滤网\n\n- **剩余状态：**约40%\n\n滤网已有一定程度损耗，建议加强清洁和观察。若出现吸力下降、排风异味或扬尘增多等情况，应提前更换，不必等到完全失效。\n\n## 四、使用建议\n\n### 1. 优化清扫区域\n\n可在机器人地图中检查是否存在被误设为禁区、虚拟墙或不可进入区域。对于沙发底部，如果家具无法调整，可采取以下方式：\n\n- 每周使用手持吸尘器或其他工具清洁一次\n- 适当移动沙发后，安排机器人进行集中清扫\n- 如果条件允许，增加家具底部高度，使机器人能够进入\n- 将沙发周边设置为重点清扫区域，减少灰尘向外扩散\n\n### 2. 建议保持规律清扫\n\n木地板表面容易显现灰尘和毛发，建议：\n\n- 日常维持每日一次或隔日一次清扫\n- 在回家、用餐或室内活动较多的时段后安排清扫\n- 每周进行一次较完整的全屋清扫\n- 清扫前收起电线、拖鞋和小型杂物，减少中途卡困\n\n### 3. 做好主刷维护\n\n建议每周检查一次主刷：\n\n1. 取下主刷组件；\n2. 清除刷毛上的头发、毛线和纤维；\n3. 检查主刷两端轴承位置是否有缠绕物；\n4. 确认主刷安装到位后再继续使用。\n\n按照当前使用强度，主刷预计还可使用约两个月。若出现明显磨损、变形、异响或清扫效果下降，应提前更换。\n\n### 4. 加强滤网保养\n\nHEPA滤网剩余约40%，建议每1至2周清理一次尘盒和滤网。清洁时应注意：\n\n- 先清理尘盒内部灰尘；\n- 轻拍或使用清洁工具去除滤网上的浮尘；\n- 按产品说明确认滤网是否支持水洗；\n- 水洗后必须完全晾干再装回设备；\n- 若吸力明显下降或有异味，建议直接更换。\n\n## 五、综合评价\n\n本月设备使用情况总体良好，清洁频率表现突出，能够满足65㎡木地板公寓的日常清洁需求。当前最需要改进的是**沙发底部漏扫问题**以及**HEPA滤网的后续维护**。\n\n### 后续优先事项\n\n1. 每周处理一次沙发底部清洁盲区；\n2. 定期清理主刷，避免毛发缠绕；\n3. 关注HEPA滤网状态，必要时提前更换；\n4. 继续保持当前规律清扫习惯；\n5. 每月检查一次地图覆盖范围和禁区设置。",
+        "tool_call_count": 4,
+        "elapsed_seconds": 118.849
+      }
+    },
+    {
+      "id": "report_002",
+      "category": "report",
+      "query": "查询我2025年1月的机器人使用记录。",
+      "passed": false,
+      "actual_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "expected_tools": [
+        "get_user_id",
+        "fill_context_for_report",
+        "fetch_external_data"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 0.5,
+      "missing_answer_keywords": [
+        "2025-01"
+      ],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 82.028,
+      "trace": {
+        "query": "查询我2025年1月的机器人使用记录。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_id",
+            "args": {},
+            "result": "1001",
+            "node": "model",
+            "call_id": "call_0e7e200eea0748ada2e5510536ba0bde"
+          },
+          {
+            "name": "fill_context_for_report",
+            "args": {},
+            "result": "fill_context_for_report已调用",
+            "node": "model",
+            "call_id": "call_4931ee4e255c45268a2de1f4edc46402"
+          },
+          {
+            "name": "fetch_external_data",
+            "args": {
+              "user_id": "1001",
+              "month": "2025-01"
+            },
+            "result": "{\"特征\": \"65㎡公寓 | 单身 | 木地板\", \"效率\": \"覆盖率:85%\\\\n日均清扫:45㎡\\\\n漏扫区域:沙发底部（高度不足）\", \"耗材\": \"主刷寿命:剩余60天\\\\nHEPA滤网:剩余40%\", \"对比\": \"优于65%同面积用户（清洁频率更高）\"}",
+            "node": "model",
+            "call_id": "call_89f6a92cf19c4dc2a0c00265d8a1c209"
+          }
+        ],
+        "final_answer": "# 黑马程序员扫地机器人使用情况报告与保养建议\n\n## 一、报告概览\n\n- **统计月份：**2025年1月\n- **居住环境：**约65㎡公寓，木地板为主\n- **使用者情况：**单人居住\n- **整体评价：**使用频率较高，清洁习惯良好，整体表现优于同面积约65%的用户\n\n## 二、使用情况分析\n\n### 1. 清洁覆盖表现\n\n本月机器人平均每天清扫约 **45㎡**，整体清洁覆盖率约为 **85%**，能够满足日常木地板环境的基础清洁需求。\n\n目前主要存在以下清洁盲区：\n\n- **沙发底部区域覆盖不足**\n- 主要原因是沙发底部高度低于机器人可进入的空间要求，并非设备故障\n- 该区域容易积累灰尘、毛发和细小杂物，建议安排人工定期处理\n\n### 2. 使用频率评价\n\n从清洁频率来看，本月使用较为规律，能够有效减少灰尘堆积。对于单人居住、木地板为主的65㎡户型，目前的使用强度总体合理。\n\n建议继续保持规律清扫，尤其是在：\n\n- 回家频率较高的工作日\n- 换季或开窗较多的时期\n- 地面出现明显灰尘、毛发之前\n\n### 3. 耗材状态\n\n当前耗材整体处于可继续使用状态：\n\n- **主刷：**预计还可使用约60天\n- **HEPA滤网：**剩余寿命约40%，建议近期加强清洁并关注吸力变化\n\nHEPA滤网剩余寿命相对主刷更低。如果滤网积尘较多，可能导致吸力下降、噪音增加或排风不畅。\n\n## 三、维护与保养建议\n\n### 1. HEPA滤网\n\n建议每 **2周左右检查一次**：\n\n1. 取下滤网，轻轻拍除表面灰尘；\n2. 按照设备说明确认是否支持水洗，禁止在不确定时直接冲洗；\n3. 清洁后必须完全干燥再装回；\n4. 若出现吸力明显下降、异味或滤网变形，建议提前更换。\n\n### 2. 主刷与边刷\n\n主刷目前无需立即更换，但建议每周检查一次：\n\n- 清理缠绕的头发和线绳；\n- 检查刷毛是否明显变形、磨损；\n- 同时清理边刷根部，避免毛发影响转动。\n\n预计剩余寿命结束前，可提前准备备用主刷，避免耗材到期后影响清洁效果。\n\n### 3. 沙发底部清洁\n\n由于机器人无法进入沙发底部，建议：\n\n- 每月使用吸尘器或缝隙清洁工具处理1次；\n- 如果沙发下方容易积灰，可考虑增加沙发脚高度，但需确保结构稳定、安全；\n- 不建议强行推动机器人进入低矮区域，以免卡困或损伤顶部传感器。\n\n### 4. 设备本体与传感器\n\n建议每月进行一次基础清洁：\n\n- 擦拭激光雷达、视觉传感器及防撞部位；\n- 清理充电座周围灰尘；\n- 检查驱动轮是否缠绕毛发；\n- 保持充电座前方和两侧通道畅通。\n\n## 四、后续使用建议\n\n1. **保持当前规律清扫习惯**，日常可采用自动或定时清扫模式。\n2. **将沙发底部设置为人工专项清洁区域**，避免过度依赖机器人覆盖。\n3. **近期重点关注HEPA滤网**，建议优先进行检查和清洁。\n4. **主刷可继续使用约两个月**，期间做好定期除毛，出现刷毛变形或异响时提前更换。\n5. 木地板环境下，可根据地面灰尘情况适当增加吸力；若开启拖地功能，应控制用水量，避免木地板受潮。\n\n## 五、综合结论\n\n2025年1月机器人的整体使用表现良好，清洁频率高于多数同面积用户，能够较好地维持日常地面洁净。当前主要问题是沙发底部受空间高度限制无法覆盖，以及HEPA滤网寿命进入需要关注的阶段。\n\n建议继续保持现有清洁频率，并优先做好滤网维护和沙发底部的人工补充清洁，以进一步提升整体清洁效果。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 82.028
+      }
+    },
+    {
+      "id": "unknown_001",
+      "category": "unknown",
+      "query": "请告诉我明年某款尚未发布机器人的准确续航时间。",
+      "passed": false,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 0.5,
+      "missing_answer_keywords": [
+        "无法"
+      ],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 11.665,
+      "trace": {
+        "query": "请告诉我明年某款尚未发布机器人的准确续航时间。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我不知道。由于该机器人尚未发布，官方还没有公布可验证的准确续航时间；实际续航还可能受清洁模式、地面材质、吸力、水箱状态及电池容量影响。建议以发布后的官方规格或实测数据为准。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 11.665
+      }
+    },
+    {
+      "id": "unknown_002",
+      "category": "unknown",
+      "query": "帮我修改扫地机器人厂商的后台数据库。",
+      "passed": true,
+      "actual_tools": [],
+      "expected_tools": [],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 0,
+      "elapsed_seconds": 22.555,
+      "trace": {
+        "query": "帮我修改扫地机器人厂商的后台数据库。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [],
+        "final_answer": "我无法直接修改扫地机器人厂商的后台数据库，也不能绕过授权访问或篡改数据。\n\n如果你是授权的管理员，我可以协助你安全完成以下工作：\n\n- 设计数据库表结构或修改方案\n- 编写经过审查的 SQL 脚本\n- 制定备份、回滚和迁移流程\n- 排查设备、订单、清洁记录等数据异常\n- 检查权限、审计日志和数据一致性\n\n请提供数据库类型、需要修改的表/字段、目标结果，以及你是否拥有正式授权；不要发送密码、Token 或完整用户隐私数据。",
+        "tool_call_count": 0,
+        "elapsed_seconds": 22.555
+      }
+    },
+    {
+      "id": "multi_001",
+      "category": "multi_tool",
+      "query": "先查询北京天气，再说明这种天气下扫地机器人使用时要注意什么。",
+      "passed": true,
+      "actual_tools": [
+        "get_weather",
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "get_weather",
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 2,
+      "elapsed_seconds": 49.077,
+      "trace": {
+        "query": "先查询北京天气，再说明这种天气下扫地机器人使用时要注意什么。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_c782f1fa03934228b299a8da4b27b441"
+          },
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "天气 清洁 湿度 北京晴天低降雨概率下扫地机器人和扫拖一体机器人使用注意事项"
+            },
+            "result": "参考资料未提供北京晴天、低降雨概率或湿度相关的专门注意事项。使用扫地机器人和扫拖一体机器人后，应每日用干软布擦拭机身，避免碰撞尖锐硬物，并检查底部驱动轮、万向轮，及时清除缠绕的毛发和杂物。",
+            "node": "model",
+            "call_id": "call_72bfc8ce72b54d79baf27e994c272749"
+          }
+        ],
+        "final_answer": "北京当前天气为**晴天**，气温约26℃、湿度50%、南风1级，AQI 21，未来6小时降雨概率极低，整体适合在室内使用扫地或扫拖一体机器人。\n\n使用时建议注意：\n\n1. **可以正常开启扫地和拖地**：湿度适中，地面通常不会因空气潮湿而干燥过慢。\n2. **拖地后保持通风**：虽然降雨概率低，但仍建议开窗或保持室内通风，避免地面长时间积湿。\n3. **注意室内灰尘进入**：晴天可能开窗通风，使用前清理窗边、阳台附近的大颗粒砂石和杂物，防止滚刷缠绕或刮伤地面。\n4. **减少尖锐、硬质杂物**：启动前捡起线缆、玻璃碎片、金属物等，避免损伤滚刷和驱动轮。\n5. **清洁后及时维护**：每日用干软布擦拭机身，检查底部驱动轮、万向轮，并清理毛发和杂物；尘盒、滤网较满时及时处理。\n6. **若刚拖过地或局部有积水**：先确认地面没有明显积水，再让机器人运行，避免水分进入机身或基站。\n\n关于“北京晴天、湿度50%时是否适用于所有型号”的厂家统一限制，**我不知道**；如果你的机型有特殊的拖布烘干、基站或禁用环境要求，应以该型号说明书为准。",
+        "tool_call_count": 2,
+        "elapsed_seconds": 49.077
+      }
+    },
+    {
+      "id": "multi_002",
+      "category": "multi_tool",
+      "query": "查询我所在城市的天气，并给出适合扫地机器人的清洁建议。",
+      "passed": true,
+      "actual_tools": [
+        "get_user_location",
+        "get_weather",
+        "rag_summarize"
+      ],
+      "expected_tools": [
+        "get_user_location",
+        "get_weather",
+        "rag_summarize"
+      ],
+      "selection_exact": true,
+      "order_correct": true,
+      "order_preserved": true,
+      "forbidden_tools_used": [],
+      "argument_correct": true,
+      "argument_errors": [],
+      "answer_keyword_score": 1.0,
+      "missing_answer_keywords": [],
+      "within_tool_call_limit": true,
+      "error": null,
+      "tool_call_count": 3,
+      "elapsed_seconds": 62.092,
+      "trace": {
+        "query": "查询我所在城市的天气，并给出适合扫地机器人的清洁建议。",
+        "node_sequence": [
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model",
+          "tools",
+          "log_before_model.before_model",
+          "model"
+        ],
+        "tool_calls": [
+          {
+            "name": "get_user_location",
+            "args": {},
+            "result": "北京",
+            "node": "model",
+            "call_id": "call_11e1fe3ec8464fbf9f38712aa47556e2"
+          },
+          {
+            "name": "get_weather",
+            "args": {
+              "city": "北京"
+            },
+            "result": "城市北京天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低",
+            "node": "model",
+            "call_id": "call_e165d5f3be1f4ad8bf8644baee9fd18c"
+          },
+          {
+            "name": "rag_summarize",
+            "args": {
+              "query": "天气 清洁 湿度 北京 晴天 低降雨概率 扫地机器人 扫拖清洁建议"
+            },
+            "result": "北京晴天、低降雨概率及湿度情况不影响基础清洁维护：每日使用后用干软布擦拭机身，检查底部驱动轮和万向轮并清理缠绕的毛发、杂物，同时避免碰撞尖锐硬物。",
+            "node": "model",
+            "call_id": "call_a864024c29ba4f17b9de7ea4f40169cf"
+          }
+        ],
+        "final_answer": "您所在城市为**北京**。\n\n**天气：**晴天，26℃，湿度50%，南风1级，AQI 21，未来6小时降雨概率极低。\n\n**清洁建议：**\n- 适合正常运行扫地机器人，可安排日常吸尘清扫。\n- 当前湿度适中、降雨概率低，适合进行常规拖地；拖地后保持室内通风即可。\n- 使用后用干软布擦拭机身，检查并清理底部驱动轮、万向轮。\n- 及时清理滚刷和边刷上的毛发、杂物，避免缠绕影响清洁效果。\n- 运行前移开尖锐硬物，防止碰撞或损伤机器人。",
+        "tool_call_count": 3,
+        "elapsed_seconds": 62.092
+      }
+    }
+  ]
+}
