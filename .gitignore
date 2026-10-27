@@ -7,6 +7,9 @@ chroma_db/
 
 # Local configuration may contain API keys.
 config/rag.yml
+.env
+.env.*
+!.env.example
 
 .DS_Store
 

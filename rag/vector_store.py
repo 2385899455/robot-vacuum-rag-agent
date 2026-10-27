@@ -81,7 +81,7 @@ class VectorStoreService:
             )
 
 
-    def load_document(self):
+    def load_document(self, strict: bool = False):
         """
         从数据文件夹内读取数据文件，转为向量存入向量库
         要计算文件的md5做去重
@@ -110,12 +110,17 @@ class VectorStoreService:
             tuple(chroma_conf["allow_knowledge_file_type"])
         )
 
+        if strict and not allowed_file_path:
+            raise RuntimeError("知识目录中没有可导入的文件，请检查数据挂载")
+
         for path in allowed_file_path:
             # 获取文件的md5
             md5_hex = get_file_md5_hex(path)
 
             # 文件不存在、不是文件或读取失败时无法计算 MD5，跳过该文件。
             if md5_hex is None:
+                if strict:
+                    raise RuntimeError(f"无法读取知识文件：{os.path.basename(path)}")
                 logger.warning(f"[加载知识库]{path}无法计算 MD5，跳过")
                 continue
 
@@ -127,12 +132,16 @@ class VectorStoreService:
                 documents: list[Document] = self.document_reader.read(path)
 
                 if not documents:
+                    if strict:
+                        raise ValueError("文档没有有效文本内容")
                     logger.warning(f"[加载知识库]{path}内没有有效文本内容，跳过")
                     continue
 
                 split_document: list[Document] = self.semantic_parser.parse(documents)
 
                 if not split_document:
+                    if strict:
+                        raise ValueError("文档没有生成有效分片")
                     logger.warning(f"[加载知识库]{path}分片后没有有效内容，跳过")
                     continue
 
@@ -148,6 +157,11 @@ class VectorStoreService:
                 logger.info(f"[加载数据库]{path}内容加载成功")
 
             except Exception as e:
+                if strict:
+                    # 部署初始化失败必须返回非零状态，且不回显第三方异常中的凭据。
+                    raise RuntimeError(
+                        f"知识导入失败：{os.path.basename(path)}（{type(e).__name__}）"
+                    ) from None
                 # exc_info=True会记录详细的报错堆栈，如果为False仅记录信息报错本身
                 logger.error(f"[加载数据库]{path}加载失败：{str(e)}", exc_info=True)
 
@@ -212,8 +226,65 @@ def test_embedding_and_chroma(
         print(f"结果 {index}：{result.page_content}")
         print(f"元数据：{result.metadata}")
 
+def _self_test_ingestion():
+    """在本文件内验证部署导入的失败退出和 MD5 重跑行为，不调用模型。"""
+    import tempfile
+    from unittest.mock import Mock, patch
+
+    with tempfile.TemporaryDirectory() as directory:
+        source = Path(directory) / "知识.txt"
+        source.write_text("离线知识", encoding="utf-8")
+        digest = get_file_md5_hex(str(source))
+        manifest = Path(directory) / "md5.text"
+        service = VectorStoreService.__new__(VectorStoreService)
+        service.document_reader = Mock()
+        service.document_reader.read.return_value = [Document(page_content="知识")]
+        service.semantic_parser = Mock()
+        service.semantic_parser.parse.return_value = [Document(page_content="知识")]
+        service._embed_and_store = Mock(side_effect=ValueError("private-upstream-message"))
+        with patch.dict(chroma_conf, {"md5_hex_store": str(manifest)}), patch(
+            __name__ + ".listdir_with_allowed_type", return_value=[str(source)]
+        ) as list_files:
+            try:
+                service.load_document(strict=True)
+            except RuntimeError as error:
+                assert "private-upstream-message" not in str(error)
+            else:
+                raise AssertionError("失败导入应抛出异常")
+            assert digest not in manifest.read_text()
+            service._embed_and_store.side_effect = None
+            service.load_document(strict=True)
+            assert digest in manifest.read_text()
+            count = service._embed_and_store.call_count
+            service.load_document(strict=True)
+            assert service._embed_and_store.call_count == count
+            list_files.return_value = []
+            try:
+                service.load_document(strict=True)
+            except RuntimeError:
+                pass
+            else:
+                raise AssertionError("空知识目录应抛出异常")
+    print("知识导入离线验证通过：失败抛出、失败不记 MD5、成功重跑跳过、空目录检查。")
+
+
 if __name__ == '__main__':
-    if "--test-embedding" in sys.argv:
+    if "--self-test" in sys.argv:
+        _self_test_ingestion()
+    elif "--ingest-only" in sys.argv:
+        try:
+            vs = VectorStoreService()
+            vs.load_document(strict=True)
+            count = vs.vector_store._collection.count()
+            if count == 0:
+                raise RuntimeError("向量库为空，请检查 MD5 记录是否与向量库配套")
+        except Exception as error:
+            # 仅输出自有安全错误消息，不回显供应商异常信息。
+            message = str(error) if isinstance(error, RuntimeError) else type(error).__name__
+            print(f"知识库初始化失败：{message}", file=sys.stderr)
+            sys.exit(1)
+        print(f"知识库初始化完成，共 {count} 个文档块。")
+    elif "--test-embedding" in sys.argv:
         test_embedding_and_chroma()
     else:
         vs = VectorStoreService()

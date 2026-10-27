@@ -1,0 +1,22 @@
+# 后端构建上下文采用白名单，私有配置、密钥、数据库和日志不会发送到构建器。
+**
+!Dockerfile
+!requirements.txt
+!requirements-api.txt
+!api/
+!api/*.py
+!agent/
+!agent/*.py
+!agent/tools/
+!agent/tools/*.py
+!model/
+!model/*.py
+!rag/
+!rag/*.py
+!utils/
+!utils/*.py
+!config/
+!config/*.yml
+config/rag.yml
+!prompts/
+!prompts/*.txt

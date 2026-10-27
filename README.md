@@ -124,63 +124,27 @@ cd Agent项目工程
 
 ## 安装依赖
 
-项目当前未提交 `requirements.txt`，可以先安装代码中使用的主要依赖：
+已固定当前项目的直接依赖版本，包含 Agent、向量库和 FastAPI：
 
 ```bash
-pip install \
-  langchain \
-  langchain-core \
-  langchain-community \
-  langchain-chroma \
-  langchain-openai \
-  langchain-text-splitters \
-  pyyaml \
-  pypdf \
-  dashscope \
-  httpx
+python -m pip install -r requirements.txt
 ```
 
-如果项目已有可用的 `.venv`，优先在该虚拟环境中安装依赖。
+Docker 使用 Python 3.12；本机已有可用 `.venv` 时可继续使用。
 
 ## 本地配置
 
-真实的模型配置文件是本地文件：
-
-```text
-config/rag.yml
-```
-
-该文件被 `.gitignore` 忽略，不会上传到 GitHub。首次从远程仓库获取项目时，可以复制示例配置：
+推荐复制环境变量模板，并填入你的聊天模型与 Embedding 服务配置：
 
 ```bash
-cp config/rag.example.yml config/rag.yml
+cp .env.example .env
 ```
 
-然后根据实际模型服务修改：
+配置读取优先级：**进程环境变量 > 项目根目录 `.env` > `config/rag.yml`**。没有本地 YAML 时使用 `config/rag.example.yml` 作为默认模板。`.env` 与私有 `rag.yml` 都被 Git 忽略，Docker 构建也不会包含它们。
 
-```yaml
-chat_model:
-  name: qwen3.7-max
-  provider: openai
-  base_url: "Chat 模型的 OpenAI 兼容接口地址"
-  api_key: "Chat 模型 API Key"
+现有 `config/rag.yml` 仍然兼容；如果同一字段在 `.env` 中有非空值，应修改 `.env`。路由模型未设置的字段继续继承聊天模型。布尔值使用 `true` / `false`。API Key 不要加 `VITE_` 前缀或写入前端。
 
-embedding_model:
-  name: qwen3.7-text-embedding
-  provider: dashscope
-  base_url: "Embedding 模型的接口地址"
-  api_key: "Embedding 模型 API Key"
-```
-
-如果 Embedding 模型通过 OpenAI 兼容接口提供，将 `embedding_model.provider` 改为 `openai`；此时会使用 Embedding 区块中的 `base_url` 和 `api_key`。
-
-不要把真实 API Key 写入 README、示例配置或其他会提交到 Git 的文件。如果 Key 曾经进入过 Git 历史或被上传过，应立即在服务平台撤销并重新生成。
-
-其他配置文件：
-
-- `config/chroma.yml`：Chroma 集合名、持久化目录、检索数量 `k`、语义类型映射和文档切分参数。
-- `config/prompts.yml`：普通提示词、RAG 提示词和报告提示词的路径。
-- `config/agent.yml`：外部 CSV 数据文件路径。
+容器部署、数据持久化和排错请阅读 [本地 Docker 部署](DEPLOYMENT.md)。
 
 ## 运行项目
 
@@ -486,4 +450,4 @@ python3 -m agent.react_agent
 - 天气和用户相关工具仍是示例实现，尚未连接真实接口。
 - RAG 数据库和 MD5 文件是本地生成数据，不随仓库发布。
 - 模型和 Embedding 服务依赖外部 API，运行时需要网络和有效凭据。
-- 项目目前没有统一的测试套件和生产部署配置。
+- 已提供本地 Docker Compose 部署配置；公网认证、限流和 HTTPS 尚未配置。
