@@ -7,6 +7,8 @@ services:
       - path: .env
         format: raw
     environment:
+      # API 不发布宿主机端口，只接受内部 Nginx；Nginx 会覆盖外部传来的代理头。
+      FORWARDED_ALLOW_IPS: "*"
       CHROMA_PERSIST_DIRECTORY: /app/storage/chroma_db
       CHROMA_MD5_HEX_STORE: /app/storage/md5.text
       CHROMA_DATA_PATH: /app/data

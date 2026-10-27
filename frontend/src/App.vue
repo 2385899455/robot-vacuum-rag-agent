@@ -223,7 +223,7 @@ onMounted(refreshHealth);
           <span class="demo-icon">ⓘ</span>
           <div>
             <strong>关于这个演示</strong>
-            <p>天气、位置与个人使用记录为模拟数据，仅用于功能体验。</p>
+            <p>天气预报来自高德服务；定位会将访问 IP 交给高德推测城市，可能不准确。个人使用记录仍为模拟数据。</p>
           </div>
         </div>
         <div class="sidebar-footer">
@@ -395,7 +395,7 @@ onMounted(refreshHealth);
         </form>
         <p class="composer-note">
           每次提问独立回答，请在问题中提供必要背景。聊天记录仅保留在当前页面。
-          <span class="mobile-demo-note">天气、位置及使用记录为模拟数据。</span>
+          <span class="mobile-demo-note">天气查询使用高德；定位会向高德发送访问 IP，结果可能不准确。使用记录为模拟数据。</span>
         </p>
       </footer>
     </main>

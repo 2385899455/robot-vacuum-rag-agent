@@ -100,6 +100,6 @@ docker compose up -d --force-recreate api
 - 网页返回 502：检查 API 健康状态及模型服务连接；HTTP 代理正常不等于第三方模型可访问。
 - 普通问候成功但知识问题没有资料：检查是否已执行 `--ingest-only`，以及 Embedding 配置是否与建库时一致。
 
-本配置只绑定本机回环地址，用于学习部署。公开给其他人使用前还需配置访问认证、请求限流和 HTTPS；当前天气、身份、月份和 CSV 仍是演示数据。
+本配置只绑定本机回环地址，用于学习部署。公开给其他人使用前还需配置访问认证、请求限流和 HTTPS；天气与 IP 定位使用高德 MCP，需在 `.env` 填写 `AMAP_MAPS_API_KEY`，详见 [MCP 接入说明](MCP.md)；身份、月份和 CSV 仍是演示数据。
 
 参考：[Compose 启动顺序与健康检查](https://docs.docker.com/compose/how-tos/startup-order/)、[Nginx 代理配置](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)。

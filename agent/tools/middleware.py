@@ -19,7 +19,7 @@ from utils.prompt_loader import load_report_prompts, load_system_prompts
 from agent.routing import INTENT_BUDGETS, classify_intent
 
 
-def build_runtime_context(query: str, intent: str | None = None) -> dict[str, Any]:
+def build_runtime_context(query: str, intent: str | None = None, *, client_ip: str | None = None) -> dict[str, Any]:
     """构造一次 Agent 运行的路由和工具预算上下文。"""
     resolved_intent = intent or classify_intent(query) or "direct"
     return {
@@ -28,6 +28,9 @@ def build_runtime_context(query: str, intent: str | None = None) -> dict[str, An
         "max_tool_calls": INTENT_BUDGETS[resolved_intent],
         "tool_call_count": 0,
         "tool_history": [],
+        # 每次请求单独传入，避免复用 Agent 时串用其他用户的位置。
+        "client_ip": client_ip,
+        "location_city": None,
     }
 
 
@@ -70,6 +73,16 @@ def monitor_tool(
         return _blocked_tool_result(
             request,
             "当前场景已达到工具调用上限，请使用已有信息直接回答用户。",
+        )
+
+    # 未知城市的场景必须先成功定位，不能在定位失败后靠模型猜城市。
+    if (name == "get_weather"
+            and context.get("intent") in {"location_weather", "mixed_location_weather"}
+            and not context.get("location_city")):
+        context["tool_call_count"] = call_count + 1
+        return _blocked_tool_result(
+            request,
+            "当前没有成功定位的城市。请先调用 get_user_location；若定位失败，请询问用户所在城市，不能猜测城市查询天气。",
         )
 
     # RAG 是一次性检索工具；重复检索只会增加延迟，不能提高流程可靠性。

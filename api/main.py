@@ -85,7 +85,11 @@ def create_app(agent_factory: Callable | None = None) -> FastAPI:
             )
         try:
             try:
-                trace = agent.execute_with_trace(body.message)
+                # 只读取 ASGI 客户端地址。代理头由 Uvicorn 的可信代理规则处理，
+                # 不直接相信浏览器提交的 X-Forwarded-For / X-Real-IP。
+                from agent.tools.mcp_maps import public_ipv4
+                client_ip = public_ipv4(request.client.host if request.client else None)
+                trace = agent.execute_with_trace(body.message, client_ip=client_ip)
             except Exception as error:
                 # 异常正文可能包含服务地址、凭据等，不直接记录或返回它。
                 logger.error("Agent 执行异常，类型：%s", type(error).__name__)
@@ -115,11 +119,13 @@ def _self_test():
     class FakeAgent:
         def __init__(self):
             self.queries = []
+            self.client_ips = []
             self.result = {"final_answer": " 测试答案 ", "tool_calls": [{"private": "hidden"}]}
             self.error = None
 
-        def execute_with_trace(self, query):
+        def execute_with_trace(self, query, *, client_ip=None):
             self.queries.append(query)
+            self.client_ips.append(client_ip)
             if self.error:
                 raise self.error
             return self.result
@@ -146,6 +152,7 @@ def _self_test():
             assert response.status_code == 200
             assert response.json() == {"answer": "测试答案"}
         assert fake.queries == ["你好", "第二个问题"]
+        assert fake.client_ips == [None, None]
         assert len(initialized) == 1
 
         fake.result = {"error": "secret-service-details", "final_answer": "不应返回的部分答案"}
@@ -169,6 +176,16 @@ def _self_test():
             assert client.get("/health").status_code == 200
         assert client.get("/docs").status_code == 200
         assert "/api/chat" in client.get("/openapi.json").json()["paths"]
+        # 原始客户端不能通过伪造代理头修改定位 IP。
+        with TestClient(create_app(lambda: fake), client=("8.8.8.8", 50000)) as public_client:
+            public_client.post("/api/chat", json={"message": "天气"}, headers={"X-Forwarded-For": "1.1.1.1"})
+            assert fake.client_ips[-1] == "8.8.8.8"
+        from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
+        for peer, expected in (("172.22.0.3", "1.1.1.1"), ("8.8.8.8", "8.8.8.8")):
+            proxied = ProxyHeadersMiddleware(create_app(lambda: fake), trusted_hosts=["172.22.0.3"])
+            with TestClient(proxied, client=(peer, 50000)) as proxy_client:
+                proxy_client.post("/api/chat", json={"message": "天气"}, headers={"X-Forwarded-For": "1.1.1.1"})
+                assert fake.client_ips[-1] == expected
     assert application.state.agent is None
     print("接口离线验证通过：输入校验、实例复用、成功响应、错误处理、繁忙状态及接口文档。")
 

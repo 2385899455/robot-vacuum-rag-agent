@@ -66,7 +66,7 @@ class ReactAgent:
         return self.agents[self.router.route(query).intent]
 
 
-    def execute_stream(self, query: str):
+    def execute_stream(self, query: str, *, client_ip: str | None = None):
         input_dict = {
             "messages": [
                 {"role": "user", "content": query}
@@ -76,7 +76,7 @@ class ReactAgent:
         # 第三个参数context就是上下文runtime中的信息，就是我们做提示词切换的标记
         decision = self.router.route(query)
         intent = decision.intent
-        context = build_runtime_context(query, intent)
+        context = build_runtime_context(query, intent, client_ip=client_ip)
         agent = self.agents[intent]
         for chunk in agent.stream(input_dict, stream_mode="values", context=context):
             latest_message = chunk["messages"][-1]
@@ -154,7 +154,7 @@ class ReactAgent:
 
         record["result"] = ReactAgent._to_jsonable(message.content)
 
-    def execute_with_trace(self, query: str) -> dict:
+    def execute_with_trace(self, query: str, *, client_ip: str | None = None) -> dict:
         """执行一次 Agent，并返回可用于评测的完整执行记录。"""
         trace = {
             "query": query,
@@ -171,7 +171,7 @@ class ReactAgent:
         intent = decision.intent
         trace["intent"] = intent
         trace["max_tool_calls"] = INTENT_BUDGETS[intent]
-        context = build_runtime_context(query, intent)
+        context = build_runtime_context(query, intent, client_ip=client_ip)
         agent = self.agents[intent]
         input_dict = {
             "messages": [

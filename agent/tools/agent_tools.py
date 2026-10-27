@@ -1,1 +1,247 @@
-import osimport randomfrom langchain_core.tools import toolfrom rag.rag_service import RagSummarizeServicefrom utils.config_handler import agent_conffrom utils.logger_handler import loggerfrom utils.path_tool import get_abs_pathrag = RagSummarizeService()user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010"]month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"]external_data = {}EVAL_MODE = os.getenv("AGENT_EVAL_MODE") == "1"@tooldef rag_summarize(query: str) -> str:    """检索扫地机器人知识库，并根据参考资料生成回答摘要。    适用于故障排查、维护保养、选购和使用知识问答，不查询个人记录或实时天气。    Args:        query: 完整的知识问题，保留设备、故障现象及使用条件等关键信息，            例如 "机器人主刷不旋转，应该如何排查？"。    Returns:        字符串，包含根据检索资料生成的回答摘要；未检索到资料时返回        "未检索到与问题相关的参考资料"。当前不单独返回文档来源字段。    """    return rag.rag_summarize(query)@tooldef get_weather(city: str) -> str:    """返回指定城市的模拟天气，用于演示天气查询和清扫环境判断流程。    当前使用固定示例数据，未接入实时天气服务，结果不代表实际天气。    Args:        city: 明确的城市名称，例如 "北京"、"深圳"；不能用 "我这里" 代替。            城市未知时先调用 get_user_location 获取演示城市。    Returns:        字符串，包含传入的城市名及固定的晴天、气温、湿度、风向风力、AQI        和未来 6 小时降雨概率描述。    """    return f"城市{city}天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低"@tooldef get_user_location() -> str:    """获取演示用户所在城市，供城市未知时的天气查询流程使用。    当前从示例城市中随机选择，未进行真实定位；用户已明确城市时无需调用。    Args:        无参数。    Returns:        城市名称字符串，取值为 "深圳"、"合肥" 或 "杭州"；        评测模式下固定返回 "北京"。可作为 get_weather 的 city 参数。    """    if EVAL_MODE:        return "北京"    return random.choice(["深圳", "合肥", "杭州"])@tooldef get_user_id() -> str:    """获取演示用户 ID，用于查询个人使用记录或生成报告。    当前从示例 ID 中随机选择，未接入真实用户身份系统。    Args:        无参数。    Returns:        数字字符串形式的用户 ID，取值为 "1001" 至 "1010"；        评测模式下固定返回 "1001"。可作为 fetch_external_data 的 user_id 参数。    """    if EVAL_MODE:        return "1001"    return random.choice(user_ids)@tooldef get_current_month() -> str:    """获取演示数据月份，用于用户未指定月份时的使用记录查询或报告流程。    当前随机选择 2025 年的一个月份，不读取真实系统月份。    用户明确指定月份时应使用用户指定值，无需调用本工具。    Args:        无参数。    Returns:        YYYY-MM 格式的月份字符串，取值为 "2025-01" 至 "2025-12"；        评测模式下固定返回 "2025-01"。可作为 fetch_external_data 的 month 参数。    """    if EVAL_MODE:        return "2025-01"    return random.choice(month_arr)def generate_external_data():    """    {        "user_id": {            "month": {"特征": xxx, "效率": xxx, ...}            "month": {"特征": xxx, "效率": xxx, ...}            ...        }        "user_id": {            "month": {"特征": xxx, "效率": xxx, ...}            ...        }        ...    }    """    # 第一次调用写入，后续不写入    if not external_data:        external_data_path = get_abs_path(agent_conf["external_data_path"])        if not os.path.exists(external_data_path):            raise FileNotFoundError(f"外部数据文件{external_data_path}不存在")        with open(external_data_path, "r", encoding='utf-8') as f:            # 不要第一行            for line in f.readlines()[1:]:                arr: list[str] = line.strip().split(",")                user_id = arr[0].replace('"', "")                feature: str = arr[1].replace('"', "")                efficiency: str = arr[2].replace('"', "")                consumable: str = arr[3].replace('"', "")                comparison: str = arr[4].replace('"', "")                time: str = arr[5].replace('"', "")                if user_id not in external_data:                    external_data[user_id] = {}                """                这里写的有一些问题，如果csv文件中一个user_id出现两个相同的时间，存入字典会覆盖前面的内容                """                external_data[user_id][time] = {                    "特征": feature,                    "效率": efficiency,                    "耗材": consumable,                    "对比": comparison,                }@tooldef fetch_external_data(user_id: str, month: str) -> str:    """查询本地 CSV 中指定用户、指定月份的模拟机器人使用记录。    适用于个人记录查询和报告生成，不用于通用知识问答。    在当前 Agent 流程中，需先调用 fill_context_for_report 再调用本工具。    Args:        user_id: 用户 ID，数字字符串，例如 "1001"；未知时通过 get_user_id 获取。        month: 查询月份，格式为 YYYY-MM，例如 "2025-01"。            优先使用用户指定月份，未指定时通过 get_current_month 获取演示月份。    Returns:        找到记录时返回字典，包含 "特征"、"效率"、"耗材"、"对比" 四个字段；        用户或月份不存在时返回空字符串，不表示使用量为零。        数据文件不存在或读取失败时抛出异常，不返回空字符串。    """    generate_external_data()    try:        return external_data[user_id][month]    except KeyError:        logger.warning(f"[fetch_external_data]未能检测到用户：{user_id}在{month}的使用数据")        return ""@tooldef fill_context_for_report():    """触发个人使用记录或报告场景的上下文切换。    在调用 fetch_external_data 前调用；成功后由工具中间件设置报告标记，    后续模型调用使用报告提示词。仅用于个人记录或报告流程。    Args:        无参数。    Returns:        固定字符串 "fill_context_for_report已调用"，表示工具执行完成；        不包含用户使用记录，也不直接生成报告正文。    """    return f"fill_context_for_report已调用"if __name__ == "__main__":    print(fetch_external_data.invoke({"user_id": "1001", "month": "2025-01"}))
+import os
+import json
+import random
+from langchain_core.tools import tool
+from langchain.tools import ToolRuntime
+from agent.tools.mcp_maps import weather, locate
+from rag.rag_service import RagSummarizeService
+from utils.config_handler import agent_conf
+from utils.logger_handler import logger
+from utils.path_tool import get_abs_path
+
+rag = RagSummarizeService()
+user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010"]
+month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"]
+external_data = {}
+EVAL_MODE = os.getenv("AGENT_EVAL_MODE") == "1"
+
+
+
+@tool
+def rag_summarize(query: str) -> str:
+    """检索扫地机器人知识库，并根据参考资料生成回答摘要。
+    适用于故障排查、维护保养、选购和使用知识问答，不查询个人记录或实时天气。
+
+    Args:
+        query: 完整的知识问题，保留设备、故障现象及使用条件等关键信息，
+            例如 "机器人主刷不旋转，应该如何排查？"。
+
+    Returns:
+        字符串，包含根据检索资料生成的回答摘要；未检索到资料时返回
+        "未检索到与问题相关的参考资料"。当前不单独返回文档来源字段。
+    """
+    return rag.rag_summarize(query)
+
+
+@tool
+def get_weather(city: str) -> str:
+    """通过高德官方 MCP 查询明确城市的最新可用天气预报。
+    返回按日期划分的预报，不保证提供实时湿度、AQI 或降雨概率；禁止补造缺失字段。
+
+    Args:
+        city: 明确的城市名称或行政区划编码，例如 "北京" 或 "110000"。
+            城市未知时先调用 get_user_location；定位失败则询问用户，不猜测城市。
+
+    Returns:
+        JSON 字符串。ok=true 时包含 source、kind=forecast、queried_at、data
+        及能力限制；data 中保留城市和各日期的天气、温度、风力等实际返回字段。
+        ok=false 时包含 code 和 message；未配置、超时、无数据均不返回模拟天气。
+        仅 AGENT_EVAL_MODE=1 时返回固定评测样本，不代表实际天气。
+    """
+    if EVAL_MODE:
+        return f"城市{city}天气为晴天，气温26摄氏度，空气湿度50%，南风1级，AQI21，最近6小时降雨概率极低"
+    return json.dumps(weather(city), ensure_ascii=False)
+
+
+@tool
+def get_user_location(runtime: ToolRuntime[dict]) -> str:
+    """通过高德官方 MCP 根据本次访问者的公网 IPv4 推测所在城市。
+    IP 由后端运行上下文提供，可能受 VPN、代理、运营商出口影响；不是精准定位。
+    用户已明确城市时无需调用；本地访问或定位失败时应请用户提供城市。
+
+    Args:
+        无需模型传参。访问者 IP 由框架注入，不接受模型编造，也不查询服务器出口 IP。
+
+    Returns:
+        JSON 字符串。ok=true 时 data 包含 city、province、adcode 等已返回字段，
+        approximate=true 表示 IP 推测城市；可把 data.city 传给 get_weather。
+        ok=false 时包含 code、message，不返回随机城市。仅评测模式固定返回 "北京"。
+    """
+    context = runtime.context if runtime.context is not None else {}
+    if EVAL_MODE:
+        context["location_city"] = "北京"
+        return "北京"
+    result = locate(context.get("client_ip"))
+    context["location_city"] = result.get("data", {}).get("city") if result["ok"] else None
+    return json.dumps(result, ensure_ascii=False)
+
+
+@tool
+def get_user_id() -> str:
+    """获取演示用户 ID，用于查询个人使用记录或生成报告。
+    当前从示例 ID 中随机选择，未接入真实用户身份系统。
+
+    Args:
+        无参数。
+
+    Returns:
+        数字字符串形式的用户 ID，取值为 "1001" 至 "1010"；
+        评测模式下固定返回 "1001"。可作为 fetch_external_data 的 user_id 参数。
+    """
+    if EVAL_MODE:
+        return "1001"
+    return random.choice(user_ids)
+
+
+@tool
+def get_current_month() -> str:
+    """获取演示数据月份，用于用户未指定月份时的使用记录查询或报告流程。
+    当前随机选择 2025 年的一个月份，不读取真实系统月份。
+    用户明确指定月份时应使用用户指定值，无需调用本工具。
+
+    Args:
+        无参数。
+
+    Returns:
+        YYYY-MM 格式的月份字符串，取值为 "2025-01" 至 "2025-12"；
+        评测模式下固定返回 "2025-01"。可作为 fetch_external_data 的 month 参数。
+    """
+    if EVAL_MODE:
+        return "2025-01"
+    return random.choice(month_arr)
+
+
+def generate_external_data():
+    """
+    {
+        "user_id": {
+            "month": {"特征": xxx, "效率": xxx, ...}
+            "month": {"特征": xxx, "效率": xxx, ...}
+            ...
+        }
+        "user_id": {
+            "month": {"特征": xxx, "效率": xxx, ...}
+            ...
+        }
+        ...
+    }
+    """
+    # 第一次调用写入，后续不写入
+    if not external_data:
+        external_data_path = get_abs_path(agent_conf["external_data_path"])
+
+        if not os.path.exists(external_data_path):
+            raise FileNotFoundError(f"外部数据文件{external_data_path}不存在")
+
+        with open(external_data_path, "r", encoding='utf-8') as f:
+            # 不要第一行
+            for line in f.readlines()[1:]:
+                arr: list[str] = line.strip().split(",")
+
+                user_id = arr[0].replace('"', "")
+                feature: str = arr[1].replace('"', "")
+                efficiency: str = arr[2].replace('"', "")
+                consumable: str = arr[3].replace('"', "")
+                comparison: str = arr[4].replace('"', "")
+                time: str = arr[5].replace('"', "")
+
+                if user_id not in external_data:
+                    external_data[user_id] = {}
+
+                """
+                这里写的有一些问题，如果csv文件中一个user_id出现两个相同的时间，存入字典会覆盖前面的内容
+                """
+                external_data[user_id][time] = {
+                    "特征": feature,
+                    "效率": efficiency,
+                    "耗材": consumable,
+                    "对比": comparison,
+                }
+
+
+@tool
+def fetch_external_data(user_id: str, month: str) -> str:
+    """查询本地 CSV 中指定用户、指定月份的模拟机器人使用记录。
+    适用于个人记录查询和报告生成，不用于通用知识问答。
+    在当前 Agent 流程中，需先调用 fill_context_for_report 再调用本工具。
+
+    Args:
+        user_id: 用户 ID，数字字符串，例如 "1001"；未知时通过 get_user_id 获取。
+        month: 查询月份，格式为 YYYY-MM，例如 "2025-01"。
+            优先使用用户指定月份，未指定时通过 get_current_month 获取演示月份。
+
+    Returns:
+        找到记录时返回字典，包含 "特征"、"效率"、"耗材"、"对比" 四个字段；
+        用户或月份不存在时返回空字符串，不表示使用量为零。
+        数据文件不存在或读取失败时抛出异常，不返回空字符串。
+    """
+    generate_external_data()
+
+    try:
+        return external_data[user_id][month]
+    except KeyError:
+        logger.warning(f"[fetch_external_data]未能检测到用户：{user_id}在{month}的使用数据")
+        return ""
+
+
+@tool
+def fill_context_for_report():
+    """触发个人使用记录或报告场景的上下文切换。
+    在调用 fetch_external_data 前调用；成功后由工具中间件设置报告标记，
+    后续模型调用使用报告提示词。仅用于个人记录或报告流程。
+
+    Args:
+        无参数。
+
+    Returns:
+        固定字符串 "fill_context_for_report已调用"，表示工具执行完成；
+        不包含用户使用记录，也不直接生成报告正文。
+    """
+    return f"fill_context_for_report已调用"
+
+
+
+
+def _self_test():
+    """使用脚本化模型验证真实 LangChain 工具注入及定位失败约束，不请求 LLM。"""
+    from unittest.mock import patch
+    from langchain.agents import create_agent
+    from langchain_core.language_models.fake_chat_models import FakeMessagesListChatModel
+    from langchain_core.messages import AIMessage
+    from agent.tools.middleware import build_runtime_context, monitor_tool
+
+    class ScriptedModel(FakeMessagesListChatModel):
+        def bind_tools(self, tools, **kwargs):
+            return self
+
+    assert get_user_location.tool_call_schema.model_json_schema().get("properties", {}) == {}
+    responses = [
+        AIMessage(content="", tool_calls=[{"name": "get_user_location", "args": {}, "id": "location"}]),
+        AIMessage(content="", tool_calls=[{"name": "get_weather", "args": {"city": "北京市"}, "id": "weather"}]),
+        AIMessage(content="完成"),
+    ]
+    graph = create_agent(ScriptedModel(responses=responses), tools=[get_user_location, get_weather], middleware=[monitor_tool])
+    with patch(__name__ + ".EVAL_MODE", False), patch(__name__ + ".locate") as locate_mock, patch(__name__ + ".weather") as weather_mock:
+        locate_mock.return_value = {"ok": True, "data": {"city": "北京市"}, "approximate": True}
+        weather_mock.return_value = {"ok": True, "kind": "forecast"}
+        context = build_runtime_context("我这里天气怎么样", "location_weather", client_ip="8.8.8.8")
+        graph.invoke({"messages": [{"role": "user", "content": "我这里天气怎么样"}]}, context=context)
+        locate_mock.assert_called_once_with("8.8.8.8")
+        weather_mock.assert_called_once_with("北京市")
+        assert context["location_city"] == "北京市" and context["tool_call_count"] == 2
+        weather_mock.reset_mock()
+        locate_mock.return_value = {"ok": False, "code": "LOCATION_UNAVAILABLE"}
+        next_context = build_runtime_context("我这里天气怎么样", "location_weather")
+        output = graph.invoke({"messages": [{"role": "user", "content": "我这里天气怎么样"}]}, context=next_context)
+        assert next_context["client_ip"] is None and next_context["location_city"] is None
+        assert any("不能猜测城市" in str(message.content) for message in output["messages"])
+        weather_mock.assert_not_called()
+    print("工具流程验证通过：IP 隐藏注入、定位后查天气、请求隔离、失败禁止猜城市。")
+
+
+if __name__ == "__main__":
+    import sys
+    if "--self-test" in sys.argv:
+        _self_test()
+    else:
+        print(fetch_external_data.invoke({"user_id": "1001", "month": "2025-01"}))
