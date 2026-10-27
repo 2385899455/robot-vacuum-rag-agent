@@ -324,6 +324,84 @@ for chunk in agent.execute_stream("小户型适合哪种扫地机器人？"):
     print(chunk, end="", flush=True)
 ```
 
+## 本地 HTTP 接口
+
+在已有 Agent 依赖和有效 `config/rag.yml` 的虚拟环境中，安装接口依赖并启动：
+
+```bash
+python3 -m pip install -r requirements-api.txt
+python3 -m api.main
+```
+
+默认监听 `127.0.0.1:8000`，用于本机开发。端口被占用时可指定 `--port 8001`。
+也可以使用 `python3 -m uvicorn api.main:app --host 127.0.0.1 --port 8000` 启动。
+
+- `GET /health`：返回 `{"status":"ok","agent_ready":true}`，只检查本地初始化，不探测远端模型。
+- `POST /api/chat`：接收 `{"message":"你好"}`，成功返回 `{"answer":"..."}`。
+- `/docs`：浏览器中的交互式接口文档，可展开聊天接口并使用 Try it out 发起请求。
+
+请求示例：
+
+```bash
+curl http://127.0.0.1:8000/health
+curl -X POST http://127.0.0.1:8000/api/chat \
+  -H 'Content-Type: application/json' \
+  -d '{"message":"你好"}'
+```
+
+`message` 必须是字符串，去掉首尾空格后长度为 1–2000 字符，不接受额外字段。错误输入返回 HTTP 422；执行异常返回 500；Agent 报错或空答案返回 502；未就绪或忙碌返回 503。执行错误使用 `{"detail":"..."}` 响应，参数校验错误的 `detail` 是错误列表。聊天接口只返回最终答案，不返回内部轨迹或异常正文。
+
+每个服务进程启动时初始化一次 Agent。当前每进程只执行一个聊天请求，忙碌时立即返回 503 和 `Retry-After: 5`，不会将所有聊天请求堆入队列。每次问答使用独立上下文，当前无多轮记忆。健康检查不受聊天执行锁影响。
+
+这是供后续 Vue 页面连接的本地接口；当前未包含公网认证和访问配额。Vue 开发时可通过 Vite 将 `/api` 代理到此服务。模拟数据工具的能力边界保持不变。
+
+验证代码放在 `api/main.py` 内，不调用真实模型：
+
+```bash
+python3 -m api.main --self-test
+```
+
+该验证覆盖请求校验、实例复用、成功响应、失败和空答案、繁忙状态及接口文档。真实模型链路可以通过 `/docs` 或上面的 curl 命令验证。
+
+## Vue 本地聊天页面
+
+前端位于 `frontend/`，使用 Vue 3 + Vite，依赖版本由 `package-lock.json` 固定。
+在两个终端分别启动后端和前端：
+
+```bash
+# 终端一：Agent项目工程 根目录
+.venv/bin/python -m api.main
+```
+
+```bash
+# 终端二：Agent项目工程 根目录
+cd frontend
+npm ci
+npm run dev
+```
+
+浏览器打开 `http://127.0.0.1:5173`。Vite 开发代理会把 `/api` 和 `/health` 转发到
+`http://127.0.0.1:8000`。如果更改后端端口，需要同步修改 `frontend/vite.config.js`。
+前端使用 Node.js 和 npm，不使用 Python 虚拟环境安装前端依赖。
+
+页面支持快捷问题填入、Enter 发送、Shift + Enter 换行、中文输入法组合输入、等待提示、
+失败后手动重试、清空对话和复制回答。Markdown 回答经过 HTML 清理后展示，支持报告表格。
+问题限制为去除首尾空格后的 1–2000 个字符；发送期间禁止再次发送。
+
+页面上的聊天记录只保留在当前页面，刷新后消失，每次只发送当前问题，后端仍为单次问答。
+前端等待最多 180 秒，超时不会取消后端正在运行的 Agent，不自动重试以免重复调用。
+右上角状态检查仅表示本地后端就绪，不保证远端模型服务可用。
+
+前端生产构建检查：
+
+```bash
+cd frontend
+npm run build
+```
+
+产物在 `frontend/dist/`。Vite 的代理用于本地开发，正式部署时需另行配置 `/api`、`/health`
+的后端转发；`npm run dev` 不作为公网生产部署方式。
+
 ## 主要工具
 
 工具定义位于 `agent/tools/agent_tools.py`：

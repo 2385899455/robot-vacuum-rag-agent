@@ -1,0 +1,20 @@
+{
+  "name": "cleanmate-agent-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "dompurify": "3.4.17",
+    "marked": "18.1.2",
+    "vue": "3.5.44"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.10",
+    "vite": "8.3.5"
+  }
+}
